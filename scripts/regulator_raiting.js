@@ -5,13 +5,31 @@ Promise.all([
   d3.csv("data/barplot.csv")
 ]).then(function(input){
 
-  input.forEach(function(d) {
+  input[0].forEach(function(d) {
       d.regulator = d.regulator.toString();
       d.ide = +d.ide;
-  })});
+  });
+
+    input[1].forEach(function(d) {
+    d.regulator = d.regulator.toString();
+    d.ide = +d.ide;
+    });
+
+    update(input[0]);
+
+    d3.select("#var-1").on("click", function(){
+        update(input[0])
+    });
+
+    d3.select("#var-2").on("click", function(){
+        update(input[1]);
+    })
+});
+
+
 
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 30, bottom: 40, left: 300},
+var margin = {top: 20, right: 30, bottom: 40, left: 50},
     width = 460 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
 
@@ -27,14 +45,15 @@ var svg = d3.select("#regulator_raiting")
 var x = d3.scaleBand()
  .range([ 0, width ])
  .padding(0.2);
+
 var xAxis = svg.append("g")
- .attr("transform", "translate(0," + height + ")")
+ .attr("transform", "translate(0," + height + ")");
 
 // Initialize the Y axis
 var y = d3.scaleLinear()
  .range([ height, 0]);
 var yAxis = svg.append("g")
- .attr("class", "myYaxis")
+ .attr("class", "myYaxis");
 
 
 // A function that create / update the plot for a given variable:
@@ -50,7 +69,7 @@ function update(data) {
 
  // Create the u variable
  var u = svg.selectAll("rect")
-   .data(data)
+   .data(data);
 
  u
    .enter()
@@ -70,6 +89,5 @@ function update(data) {
    .remove()
 }
 
-// Initialize the plot with the first dataset
-update(data1)
+
 
