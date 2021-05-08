@@ -15,6 +15,8 @@ d3.csv("data/barplot.csv", function(data) {
   
   data.forEach(function(d){d.ide = +d.ide;});
 
+  console.log(data)
+
   // Add X axis
   var x = d3.scaleLinear()
     .domain([0, 50000])
