@@ -1,8 +1,8 @@
 // create 2 data_set
 
 Promise.all([
-  d3.csv("data/regions_pivot.csv"),
-  d3.csv("data/barplot.csv")
+  d3.csv("data/barplot.csv"),
+  d3.csv("data/regions_pivot.csv")
 ]).then(function(input){
 
   input[0].forEach(function(d) {
@@ -27,10 +27,9 @@ Promise.all([
 });
 
 
-
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 30, bottom: 40, left: 50},
-    width = 460 - margin.left - margin.right,
+    width = 800 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -48,6 +47,8 @@ var x = d3.scaleBand()
 
 var xAxis = svg.append("g")
  .attr("transform", "translate(0," + height + ")");
+
+
 
 // Initialize the Y axis
 var y = d3.scaleLinear()
