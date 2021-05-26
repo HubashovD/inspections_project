@@ -1,0 +1,47 @@
+ <div>тут повинно бути зображення</div>
+    <div class="grid-container">
+      <div class="grid-item">
+      <h1>Про проєкт</h1>
+      </div>
+      <div class="grid-item">
+          <p style="margin-top: 50px;">Мета проєкту – допомогти навчальним закладам краще зрозуміти, як вони розпоряджаються благодійною допомогою, і раціональніше її залучати. Меценатам та батькам, які надають допомогу, інструмент дає змогу проаналізувати, на що вона використовується. Управління освіти і науки Тернопільської міської ради отримує моніторинговий інструмент, який дозволяє контролювати благодійні внески, що надаються закладам освіти.</p>
+          <p>Візуалізація створена на основі відкритих даних, оприлюднених від 2019 року,  <a href="https://data.gov.ua/dataset/71585dcb-53ea-46eb-a237-d716e10d739d">про благодійні внески закладів освіти</a>, а також даних про плани закупівель, оприлюднених через <a href="https://prozorro.gov.ua/">Prozorro</a>, та даних про транзакції закладів освіти із <a href="https://spending.gov.ua/new/">Єдиного веб-порталу використання публічних коштів.</a></p>
+          <p>Дані дашбордів оновлюються щоквартально.</p>
+          <a href="about.html#about-page" class="button-black">Читати далі</a>
+      </div>
+    </div>
+    <div>
+    <div>
+      тут повинен бути текст до першого графіку
+    </div>
+    <!-- Add 2 buttons --> 
+    <button id = "var-1">Variable 1</button>
+    <button id = "var-2">Variable 2</button>
+    <!-- Create a div where the graph will take place --> 
+    <svg id="regulator_raiting"></svg>
+    </div>
+
+      <button type="button" class="collapsible" style="height: 156px;">Open Collapsible</button>
+    </div>
+      <div class="content">
+        <p> На графіку відображені пожертви в часі, ви можете проаналізувати їх у розрізі місяців. Стовпчики ілюструють суму внеску за певний місяць. Ви також можете вибрати один або кілька фільтрів: рік, тип навчального закладу і/або окремий навчальний заклад.</p>
+      </div>
+         
+  </div>
+    
+    <script src="scripts/regulator_raiting.js"></script>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}

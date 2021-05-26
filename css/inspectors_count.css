@@ -1,0 +1,7 @@
+#inspectors_count {
+    position: relative;
+}
+
+#inspectors_count .tooltip {
+    position: absolute;
+}
