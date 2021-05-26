@@ -1,7 +1,8 @@
-#inspectors_count {
+#regulator_raiting {
     position: relative;
 }
 
-#inspectors_count .tooltip {
+#regulator_raiting .tooltip {
     position: absolute;
+    z-index: 999;
 }

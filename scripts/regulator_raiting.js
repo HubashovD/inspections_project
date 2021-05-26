@@ -35,6 +35,7 @@
 
   // append the svg object to the body of the page
   var svg = d3.select("#regulator_raiting")
+  .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -129,12 +130,6 @@
       .attr("height", y.bandwidth())
       .attr("width", function (d) { return x(d.ide); })
       .attr("fill", "#69b3a2")
-
-    // If less group in the new dataset, I delete the ones not in use anymore
-    u
-      .exit()
-      .remove()
-      
   }
 
 
