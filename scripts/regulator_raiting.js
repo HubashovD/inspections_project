@@ -130,6 +130,14 @@
       .attr("height", y.bandwidth())
       .attr("width", function (d) { return x(d.ide); })
       .attr("fill", "#69b3a2")
+
+    // If less group in the new dataset, I delete the ones not in use anymore
+    u
+      .exit()
+      .remove()
+      .on("mouseover", showTooltip)
+      .on("mousemove", moveTooltip)
+      .on("mouseleave", hideTooltip)
   }
 
 
