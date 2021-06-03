@@ -1,8 +1,8 @@
 (function () {
     // set the dimensions and margins of the graph
     var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        width = 700 - margin.left - margin.right,
+        height = 700 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     var svg = d3.select("#line_chart")
@@ -13,16 +13,17 @@
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    var parseTime = d3.timeParse("%y-%m-%d");
+    var parseTime = d3.timeParse("%Y-%m");
 
     //Read the data
     d3.csv("data/line_chart.csv").then(function (data) {
 
         // format the data
         data.forEach(function (d) {
-            d.date = parseTime(d.date_start);
-            d.close = +d.close;
+            d.date_start = parseTime(d.date_start);
+            d.ide = +d.ide
         });
+
 
         // List of groups (here I have one group per column)
         var allGroup = d3.map(data, function (d) { return (d.sphere) }).keys()
@@ -54,7 +55,10 @@
             .domain([0, d3.max(data, function (d) { return +d.ide; })])
             .range([height, 0]);
         svg.append("g")
+            .attr("class", "myYaxis")
             .call(d3.axisLeft(y));
+
+
 
         // Initialize line with first group of the list
         var line = svg
@@ -75,11 +79,26 @@
             // Create new data with the selection?
             var dataFilter = data.filter(function (d) { return d.sphere == selectedGroup })
 
+            var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
+            .key(function(d) { return d.status;})
+            .entries(data);
+        
+        console.log(sumstat)
+
+
+            // create the Y axis
+            y.domain([0, d3.max(dataFilter, function (d) { return d.ide })]);
+            svg.selectAll(".myYaxis")
+                .transition()
+                .duration(500)
+                .call(d3.axisLeft(y));
+
+
             // Give these new data to update line
             line
                 .datum(dataFilter)
                 .transition()
-                .duration(1000)
+                .duration(500)
                 .attr("d", d3.line()
                     .x(function (d) { return x(d.date_start) })
                     .y(function (d) { return y(+d.ide) })
@@ -93,8 +112,8 @@
             var selectedOption = d3.select(this).property("value")
             // run the updateChart function with this selected option
             update(selectedOption)
+
         })
 
     })
-
 })();
