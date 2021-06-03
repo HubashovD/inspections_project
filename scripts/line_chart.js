@@ -13,7 +13,7 @@
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    var parseTime = d3.timeParse("%y-%B-%d");
+    var parseTime = d3.timeParse("%y-%m-%d");
 
     //Read the data
     d3.csv("data/line_chart.csv").then(function (data) {
