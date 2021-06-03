@@ -35,12 +35,12 @@
             .enter()
             .append('option')
             .text(function (d) { return d; }) // text showed in the menu
-            .attr("value", function (d) { return d; }) // corresponding value returned by the button
+            .attr("value", function (d) { return d; }); // corresponding value returned by the button
 
         // A color scale: one color for each group
         var myColor = d3.scaleOrdinal()
-            .domain(allGroup)
-            .range(d3.schemeSet2);
+            .domain(["Заплановано", "Проведено", "Не проведено"])
+            .range(["purple", "green", "red"]);
 
         // Add X axis --> it is a date format
         var x = d3.scaleTime()
@@ -50,74 +50,161 @@
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x).ticks(7));
 
+
+
+        var testFilter = data.filter(function (d) { return d.sphere == allGroup[0] });
+
         // Add Y axis
         var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function (d) { return +d.ide; })])
+             .domain([0, d3.max(testFilter, function (d) { return +d.ide; })])
             .range([height, 0]);
+
+
         svg.append("g")
             .attr("class", "myYaxis")
             .call(d3.axisLeft(y));
 
         var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
-            .key(function (d) { return d.status; })
-            .entries(data.filter(function (d) { return d.sphere == allGroup[0] }));
+            .key(function(d) { return d.status;})
+            .entries(testFilter);
 
-        sumstat.forEach(function (line_data) {
-            console.log(line_data.values)
-            var line = svg
-            .append('g')
-            .append("path")
-            .data(line_data.values)
-            //.datum(data.filter(function (d) { return d.sphere == allGroup[0] }))
-            .attr("d", d3.line()
-                .x(function (d) { return x(d.date_start) })
-                .y(function (d) { return y(+d.ide) })
-            )
-            .attr("stroke", function (d) { return myColor("valueA") })
-            .style("stroke-width", 4)
-            .style("fill", "none")
-        });
+        var group = svg.selectAll(".group")
+            .data(sumstat)
+            .enter()
+            .append("g")
+            .attr("class", "group");
 
-        // Initialize line with first group of the list
-        var line = svg
-            .append('g')
-            .append("path")
-            .datum(data.filter(function (d) { return d.sphere == allGroup[0] }))
-            .attr("d", d3.line()
-                .x(function (d) { return x(d.date_start) })
-                .y(function (d) { return y(+d.ide) })
-            )
-            .attr("stroke", function (d) { return myColor("valueA") })
-            .style("stroke-width", 4)
-            .style("fill", "none")
+
+        var linepath = d3.line()
+            .x(function(d) {   return x(d.date_start);    })
+            .y(function(d) {  return y(d.ide); });
+
+
+        group.append("path")
+            .attr("class", "line")
+            .attr("d", function(d) {
+                return linepath(d.values);
+            })
+            .attr("fill", "none")
+            .style("stroke", function(d) {
+                return myColor(d.key);
+            });
+
 
         // A function that update the chart
         function update(selectedGroup) {
 
+
+            var linepath = d3.line()
+                .x(function(d) {   return x(d.date_start);    })
+                .y(function(d) {  return y(d.ide); });
+
+
             // Create new data with the selection?
-            var dataFilter = data.filter(function (d) { return d.sphere == selectedGroup })
+            var dataFilter = data.filter(function (d) { return d.sphere == selectedGroup });
 
 
+            sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
+                .key(function(d) { return d.status;})
+                .entries(dataFilter);
 
 
             // create the Y axis
             y.domain([0, d3.max(dataFilter, function (d) { return d.ide })]);
+
             svg.selectAll(".myYaxis")
                 .transition()
                 .duration(500)
                 .call(d3.axisLeft(y));
 
 
+            svg.selectAll(".group")
+                .remove();
+
+            var group = svg.selectAll(".group")
+                .data(sumstat)
+                .enter()
+                .append("g")
+                .attr("class", "group");
+
+
+            group.append("path")
+                .attr("class", "line")
+                .attr("d", function(d) {
+                    return linepath(d.values);
+                })
+                .attr("fill", "none")
+                .style("stroke", function(d) {
+                    return myColor(d.key);
+                });
+
+
+            // var selection = svg.selectAll(".group")
+           //      .data(sumstat);
+           //
+           //  selection
+           //      .exit()
+           //      .remove();
+           //
+           //  selection.
+           //
+           //
+           //  selection.selectAll(".line")
+           //      .exit()
+           //      .remove();
+           //
+           //
+           //  selection.selectAll(".line")
+           //      .transition()
+           //      .duration(750)
+           //      .attr("d", function(d) {
+           //          return linepath(d.values);
+           //      })
+           //      .attr("fill", "none")
+           //      .style("stroke", function(d) {
+           //          return myColor(d.key);
+           //      });
+           //
+           //
+           //
+           //
+           //  selection
+           //      .enter()
+           //      .append("path")
+           //      .attr("class", ".line")
+           //      .transition()
+           //      .duration(750)
+           //      .attr("d", function(d) {
+           //          return linepath(d.values);
+           //      })
+           //      .attr("fill", "none")
+           //      .style("stroke", function(d) {
+           //          return myColor(d.key);
+           //      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // Give these new data to update line
-            line
-                .datum(dataFilter)
-                .transition()
-                .duration(500)
-                .attr("d", d3.line()
-                    .x(function (d) { return x(d.date_start) })
-                    .y(function (d) { return y(+d.ide) })
-                )
-                .attr("stroke", function (d) { return myColor(selectedGroup) })
+            // line
+            //     .datum(dataFilter)
+            //     .transition()
+            //     .duration(500)
+            //     .attr("d", d3.line()
+            //         .x(function (d) { return x(d.date_start) })
+            //         .y(function (d) { return y(+d.ide) })
+            //     )
+            //     .attr("stroke", function (d) { return myColor(selectedGroup) })
         }
 
         // When the button is changed, run the updateChart function

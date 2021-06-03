@@ -24,7 +24,7 @@
 
     d3.select("#var-2").on("click", function () {
       update(input[1]);
-    })
+    });
   });
 
 
