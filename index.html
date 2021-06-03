@@ -12,6 +12,9 @@
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/inspectors_count.css" rel="stylesheet" />
   <link href="css/regulator_raiting.css" rel="stylesheet" />
+  <link href="css/violations_barplot.css" rel="stylesheet" />
+  <!-- Color Scale -->
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 </head>
 
 <body>
@@ -82,16 +85,15 @@
         </div>
         <!-- <div class="about-right"> -->
         <p class="normal-text ">
-          Медицина Харкова в цифрах — це інтерактивний дашборд про роботу системи охорони здоров’я за 2020 рік. В його
-          основі — відкриті дані <a
-            href="https://data.city.kharkov.ua/users/user871.html?fbclid=IwAR0_AkjDox30PRt4WAvPqxZFSxWt6e7Q2jYU6XSMvfpKO3kXq02ZW8SVmfs"
-            class="h-link">Харківської міської ради</a>, <a
-            href="https://data.gov.ua/organization/natsionalna-sluzhba-zdorovia-ukrainy" class="h-link">Національної
-            служби здоров’я України</a> та <a href="https://prozorro.gov.ua/openprocurement" class="h-link">системи
-            «Prozorro»</a>. Проєкт стане корисним, якщо ви хочете дізнатися про роботу та фінансування комунальних
-          закладів охорони здоров’я, найпоширеніші захворювання, закупівлю медпродукції. Сервіс допоможе із вибором
-          сімейного лікаря, а також надасть рекомендації щодо діагностики стану здоров’я.
-          <br><br>Дані дашбордів оновлюються щоквартально.
+          Під наглядом” - журналітський проект, який має на меті вивести на світло сферу державних перевірок.
+          Як доводить міжародний досвід надмірна зарегульованість та контроль над єкономікою призводить до того, що
+          бізнес переходить в тінь та стає непрозорим, а посади в контролюючих органах натомість стають “ласими” для
+          охочих заробити нечесні гроші.
+          В 2017 році Офіс ефективного регулювання BRDO спільно із державною регуляторною службою апустили “Інспекційний
+          портал” - inspections.gov.ua, який містить інформацію про заплановані та результати позапланових перевірок
+          державними контролюючими органами.
+          Texty.org.ua вирішили проаналізувати як проводяться перевірки контролюючими органами, що з цього вийшло -
+          читайте далі.
         </p>
 
         <a class="read-next-button" href="about_project.html#about-text">Читати далі</a>
@@ -119,12 +121,21 @@
   <div>
     <div id="inspectors_count"></div>
   </div>
-
-
-
+  <div>
+    <div id="violations_barplot"></div>
+  </div>
+  <div>
+    <div>
+      <!-- Initialize a select button -->
+      <select id="selectButton"></select>
+    </div>
+    <!-- Create a div where the graph will take place -->
+    <div id="line_chart"></div>
   </div>
   <script src="scripts/regulator_raiting.js"></script>
   <script src="scripts/inspectors_count.js"></script>
+  <script src="scripts/violations_barplot.js"></script>
+  <script src="scripts/line_chart.js"></script>
 </body>
 
 </html>

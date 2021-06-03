@@ -37,7 +37,7 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 1200])
+    .domain([0, 550])
     .range([ height, 0 ]);
   svg.append("g")
     .call(d3.axisLeft(y));
@@ -81,7 +81,7 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
     var subgroupName = d3.select(this.parentNode).datum().key;
     var subgroupValue = d.data[subgroupName];
     tooltip
-        .html("subgroup: " + subgroupName + "<br>" + "Value: " + subgroupValue)
+        .html("Орган: " + subgroupName + "<br>" + "Кількість інспекторів: " + subgroupValue)
         .style("opacity", 1)
   }
   var mousemove = function(d) {
