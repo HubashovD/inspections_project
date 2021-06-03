@@ -58,7 +58,25 @@
             .attr("class", "myYaxis")
             .call(d3.axisLeft(y));
 
+        var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
+            .key(function (d) { return d.status; })
+            .entries(data.filter(function (d) { return d.sphere == allGroup[0] }));
 
+        sumstat.forEach(function (line_data) {
+            console.log(line_data.values)
+            var line = svg
+            .append('g')
+            .append("path")
+            .data(line_data.values)
+            //.datum(data.filter(function (d) { return d.sphere == allGroup[0] }))
+            .attr("d", d3.line()
+                .x(function (d) { return x(d.date_start) })
+                .y(function (d) { return y(+d.ide) })
+            )
+            .attr("stroke", function (d) { return myColor("valueA") })
+            .style("stroke-width", 4)
+            .style("fill", "none")
+        });
 
         // Initialize line with first group of the list
         var line = svg
@@ -79,11 +97,7 @@
             // Create new data with the selection?
             var dataFilter = data.filter(function (d) { return d.sphere == selectedGroup })
 
-            var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
-            .key(function(d) { return d.status;})
-            .entries(data);
-        
-        console.log(sumstat)
+
 
 
             // create the Y axis
