@@ -111,7 +111,6 @@
   }
 
 
-
     // Create the u variable
     var u = svg.selectAll("rect")
       .data(data);
