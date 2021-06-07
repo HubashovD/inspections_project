@@ -65,7 +65,7 @@
             xAxis.call(d3.axisBottom(x))
 
             // Update the Y axis
-            y.domain([0, d3.max(dataFilter, function (d) { return d.ide })]);
+            y.domain([0, d3.max(dataFilter, function (d) { return d.ide})]);
             yAxis.transition().duration(1000).call(d3.axisLeft(y));
 
 
