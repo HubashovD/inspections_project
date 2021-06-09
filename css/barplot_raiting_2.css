@@ -1,0 +1,9 @@
+#barplot_raiting_2 {
+    position: relative;
+    grid-column: 1 ;
+    grid-row: 1;
+  }
+  
+  #barplot_raiting_2 .tooltip {
+    position: absolute;
+  }

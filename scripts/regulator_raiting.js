@@ -4,26 +4,31 @@
   Promise.all([
     d3.csv("data/barplot.csv"),
     d3.csv("data/regions_pivot.csv")
-  ]).then(function (input) {
+  ]).then(function (data) {
 
-    input[0].forEach(function (d) {
+    data[0].forEach(function (d) {
       d.regulator = d.regulator.toString();
       d.ide = +d.ide;
     });
 
-    input[1].forEach(function (d) {
+    data[1].forEach(function (d) {
       d.regulator = d.regulator.toString();
       d.ide = +d.ide;
     });
 
-    update(input[0]);
+    update(data[0]);
+    console.log(data[0])
+    console.log(data[1])
+    
 
     d3.select("#var-1").on("click", function () {
-      update(input[0])
+      update(data[0]);
+      console.log(data[0]);
     });
 
     d3.select("#var-2").on("click", function () {
-      update(input[1]);
+      update(data[1]);
+      console.log(data[1]);
     });
   });
 
@@ -118,6 +123,7 @@
     u
       .enter()
       .append("rect") // Add a new rect for each new elements
+      .attr("class", "bar")
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseleave", hideTooltip)
@@ -128,7 +134,7 @@
       .attr("y", function (d) { return y(d.regulator); })
       .attr("height", y.bandwidth())
       .attr("width", function (d) { return x(d.ide); })
-      .attr("fill", "#69b3a2")
+      // .attr("fill", "#69b3a2")
 
     // If less group in the new dataset, I delete the ones not in use anymore
     u

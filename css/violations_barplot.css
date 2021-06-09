@@ -7,3 +7,13 @@
     z-index: 999;
     pointer-events: none;
 }
+
+#violations_barplot svg g rect.bar {
+    fill: rgb(71, 98, 171); 
+    stroke-width: 0px;
+    border-radius: 40px 10px;
+}
+
+#violations_barplot svg g g g.tick text{
+    word-wrap: break-word;
+}

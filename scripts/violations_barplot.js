@@ -29,8 +29,8 @@
 
 
   // set the dimensions and margins of the graph
-  var margin = { top: 20, right: 30, bottom: 50, left: 500 },
-    width = 700 - margin.left - margin.right,
+  var margin = { top: 20, right: 30, bottom: 50, left: 100 },
+    width = 500 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -65,6 +65,7 @@
     y.domain(data.map(function (d) { return d.sphere; }))
     yAxis.call(d3.axisLeft(y))
       .selectAll("text")
+      .style("word-wrap", "break-word")
       .attr("transform", "translate(-10,0)")
       .style("text-anchor", "end")
 
@@ -120,6 +121,7 @@
     u
       .enter()
       .append("rect") // Add a new rect for each new elements
+      .attr("class", "bar")
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseleave", hideTooltip)
@@ -130,7 +132,10 @@
       .attr("y", function (d) { return y(d.sphere); })
       .attr("height", y.bandwidth())
       .attr("width", function (d) { return x(d.index); })
+      .attr("text", d.index)
       .attr("fill", "#69b3a2")
+      .text(function(d) {
+        return d.index})
 
     // If less group in the new dataset, I delete the ones not in use anymore
     u

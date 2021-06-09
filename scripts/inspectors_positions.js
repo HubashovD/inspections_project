@@ -36,23 +36,32 @@
             .attr("value", function (d) { return d; }) // corresponding value returned
 
         // Initialize the X axis
-        var x = d3.scaleBand()
-            .range([0, width])
-            .padding(0.2);
+        var x = d3.scaleLinear()
+               .range([0, width]);
+        
         var xAxis = svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("class", "myYaxis")
 
         // Initialize the Y axis
-        var y = d3.scaleLinear()
-            .range([height, 0]);
+        var y = d3.scaleBand()
+           .range([0, height])
+           .padding(0.2);
 
         var yAxis = svg.append("g")
-            .attr("class", "myYaxis")
+            // .attr("transform", "translate(0," + height + ")")
+
+        
+
 
         // A function that update the chart
         function update(selectedGroup) {
 
             var dataFilter = data.filter(function (d) { return d.sphere == selectedGroup });
+
+
+            dataFilter.sort(function(a, b) {
+                return  b.ide - a.ide
+              })
 
 
             // var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
@@ -61,12 +70,12 @@
 
 
             // Update the X axis
-            x.domain(dataFilter.map(function (d) { return d.clear_position; }))
-            xAxis.call(d3.axisBottom(x))
+            y.domain(dataFilter.map(function (d) { return d.clear_position; }))
+            yAxis.call(d3.axisLeft(y))
 
             // Update the Y axis
-            y.domain([0, d3.max(dataFilter, function (d) { return d.ide})]);
-            yAxis.transition().duration(1000).call(d3.axisLeft(y));
+            x.domain([0, d3.max(dataFilter, function (d) { return d.ide})]);
+            xAxis.transition().duration(1000).call(d3.axisTop(x));
 
 
 
@@ -123,10 +132,10 @@
                 .merge(u) // get the already existing elements as well
                 .transition() // and apply changes to all of them
                 .duration(1000)
-                .attr("x", function (d) { return x(d.clear_position); })
-                .attr("y", function (d) { return y(d.ide); })
-                .attr("width", x.bandwidth())
-                .attr("height", function (d) { return height - y(d.ide); })
+                .attr("x", 0)
+                .attr("y", function (d) { return y(d.clear_position); })
+                .attr("height", y.bandwidth())
+                .attr("width",function (d) { return x(d.ide); })
                 .attr("fill", "#69b3a2")
 
             // If less group in the new dataset, I delete the ones not in use anymore

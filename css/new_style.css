@@ -1,0 +1,131 @@
+#background{
+
+}
+
+.graph-box {
+    margin-left: 20%;
+    margin-right: 20%;
+    position: relative;
+}
+
+.usual-text{
+    font-family: e-UkraineLight;
+    line-height: 1.5em;
+    margin-bottom: 2.5em;
+    max-width: 70%;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding: 0;
+    box-align: justify;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#first_graph{
+}
+
+#selectButton{
+    grid-row: 1;
+    -ms-grid-column: 1;
+    grid-column: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    position: relative;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    font-family: e-UkraineLight;
+}
+
+#var-1, #var-2, #var-3, #var-4, #var-5, #var-6{
+    background-image: linear-gradient(90deg, #4f4fff, #bb829e);
+    border: none;
+    font-family: e-UkraineLight;
+    display: inline-block;
+    font-size: 1em;
+    border: 2px solid black;
+    padding: 12px 56px;
+    border-radius: 40px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    background-origin: border-box;
+    border: 2px solid transparent;
+}
+
+.small-header{
+    font-size: 2.9em;
+    font-family: e-UkraineLight;
+    line-height: 1.5em;
+    margin-bottom: 2.5em;
+    max-width: 70%;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding: 0;
+    box-align: justify;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#second-graph{
+    margin-left:auto;
+    margin-right:auto;
+    height:auto; 
+    width:auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+#var-3{
+    grid-column: 2;
+    grid-row: 1;
+    display: block;
+}
+
+#var-4{
+    grid-column: 2;
+    grid-row: 2;
+    display: block;
+}
+
+#var-5{
+    grid-column: 2;
+    grid-row: 3;
+    display: block;
+}
+
+#second-graph-grid{
+}
+#second-graph-grid-buttons{
+    grid-column: 2;
+    grid-row: 1;
+}
+#second-graph-grid-graph{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#third-graph{
+    font-family: e-UkraineLight;
+    background-color: rgb(241,241,241);
+}
+
+#gray-text{
+    background-color: rgb(241,241,241);
+}

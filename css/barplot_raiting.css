@@ -1,0 +1,7 @@
+#barplot_raiting {
+  position: relative;
+}
+
+#barplot_raiting .tooltip {
+  position: absolute;
+}
