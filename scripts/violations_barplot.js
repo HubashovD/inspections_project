@@ -50,7 +50,6 @@
   var yAxis = svg.append("g")
   // .attr("transform", "translate(0," + width + ")")
 
-
   // Initialize the Y axis
   var x = d3.scaleLinear()
     .range([0, width]);
@@ -65,9 +64,9 @@
     y.domain(data.map(function (d) { return d.sphere; }))
     yAxis.call(d3.axisLeft(y))
       .selectAll("text")
-      .style("word-wrap", "break-word")
       .attr("transform", "translate(-10,0)")
       .style("text-anchor", "end")
+
 
 
     // Update the Y axis
@@ -132,10 +131,9 @@
       .attr("y", function (d) { return y(d.sphere); })
       .attr("height", y.bandwidth())
       .attr("width", function (d) { return x(d.index); })
-      .attr("text", d.index)
-      .attr("fill", "#69b3a2")
-      .text(function(d) {
-        return d.index})
+      .attr("fill", "#2171b5")
+      .attr("rx", 6)
+      .attr("ry", 6)
 
     // If less group in the new dataset, I delete the ones not in use anymore
     u

@@ -2,8 +2,8 @@
 
 
   // set the dimensions and margins of the graph
-  var margin = { top: 30, right: 30, bottom: 70, left: 60 },
-    width = 700 - margin.left - margin.right,
+  var margin = { top: 30, right: 1, bottom: 70, left: 1 },
+    width = d3.select("#barplot_raiting").node().getBoundingClientRect().width - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -33,6 +33,7 @@
 
     var yAxis = svg.append("g")
       .attr("class", "myYaxis")
+      .style("display", "none")
 
 
 
@@ -94,15 +95,18 @@
       .attr("y", function (d) { return y(d.ide); })
       .attr("width",50)
       .attr("height", function (d) { return height - y(d.ide); })
-      .attr("fill", "#69b3a2")
+      .attr("fill", "#2171b5")
+      .attr("rx", 6)
+      .attr("ry", 6)
 
-    var labels = svg.selectAll("text")
-    .data(data)
-    .enter()
-    .append("text")
-    .attr("x", function (d) { return x(d.is_planned); })
-    .attr("y", function (d) { return y(d.ide); })
-    .text(function (d){  console.log(d); return d.ide; })
+    svg.selectAll(".bar-labels")
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("class", "bar-labels")
+      .attr("x", function (d) { return x(d.is_planned); })
+      .attr("y", function (d) { return y(d.ide); })
+      .text(function (d){  console.log(d); return d.ide; });
 
     
    // ----------------

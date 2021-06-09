@@ -45,15 +45,16 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal()
     .domain(subgroups)
-    .range(["#f7fcfd",
-        "#e5f5f9",
-        "#ccece6",
-        "#99d8c9",
-        "#66c2a4",
-        "#41ae76",
-        "#238b45",
-        "#006d2c",
-        "#00441b"])
+    .range([
+    "#f7fbff",
+    "#deebf7",
+    "#c6dbef",
+    "#9ecae1",
+    "#6baed6",
+    "#4292c6",
+    "#2171b5",
+    "#08519c",
+    "#08306b"])
 
   //stack the data? --> stack per subgroup
   var stackedData = d3.stack()
@@ -81,7 +82,7 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
     var subgroupName = d3.select(this.parentNode).datum().key;
     var subgroupValue = d.data[subgroupName];
     tooltip
-        .html("Орган: " + subgroupName + "<br>" + "Кількість інспекторів: " + subgroupValue)
+        .html(subgroupName + "<br>" +"<b>" + "Інспекторів: "+ Math.round(subgroupValue) + "</b>")
         .style("opacity", 1)
   }
   var mousemove = function(d) {
@@ -103,6 +104,8 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
     .enter().append("g")
       .attr("fill", function(d) { return color(d.key); })
       .selectAll("rect")
+      .attr("rx", 6)
+      .attr("ry", 6)
       // enter a second time = loop subgroup per subgroup to add all rectangles
       .data(function(d) { return d; })
       .enter().append("rect")
@@ -111,6 +114,8 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
         .attr("height", function(d) { return y(d[0]) - y(d[1]); })
         .attr("width",x.bandwidth())
         .attr("stroke", "grey")
+        .attr("rx", 6)
+        .attr("ry", 6)
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave)

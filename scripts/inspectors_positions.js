@@ -41,6 +41,7 @@
         
         var xAxis = svg.append("g")
             .attr("class", "myYaxis")
+            .style("display", "none")
 
         // Initialize the Y axis
         var y = d3.scaleBand()
@@ -49,8 +50,6 @@
 
         var yAxis = svg.append("g")
             // .attr("transform", "translate(0," + height + ")")
-
-        
 
 
         // A function that update the chart
@@ -82,7 +81,7 @@
             x.domain([0, d3.max(dataFilter, function (d) { return d.ide})]);
             xAxis.transition().duration(1000).call(d3.axisTop(x));
 
-
+            
 
             // ----------------
             // Create a tooltip
@@ -147,14 +146,31 @@
             u
                 .exit()
                 .remove()
+
+            var label = svg.selectAll(".bar-labels")
+                .data(dataFilter)
+    
+            label
+                .enter()
+                .append("text")
+                .attr("class", "bar-labels")
+                .merge(label)
+                .transition() // and apply changes to all of them
+                .duration(1000)
+                .attr("x", function (d) { return x(d.ide);})
+                .attr("y", function (d) { return y(d.clear_position ) + 10;})
+                .text(function (d){return d.ide;});
+            
+            label
+                .exit()
+                .remove()
         }
 
         // Initialize the plot with the first dataset
         d3.select("#selectButton_1").on("change", function (d) {
             // recover the option that has been chosen
-            var selectedOption = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(selectedOption)
+            update("відділи праці органів місцевого самоврядування")
         })
 
     });
