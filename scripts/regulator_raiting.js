@@ -135,6 +135,8 @@
       .attr("height", y.bandwidth())
       .attr("width", function (d) { return x(d.ide); })
       // .attr("fill", "#69b3a2")
+      .attr("rx", 6)
+      .attr("ry", 6)
 
     // If less group in the new dataset, I delete the ones not in use anymore
     u
