@@ -8,8 +8,8 @@
     pointer-events: none;
     font-family: 'e-Ukraine-Regular', sans-serif;
 }
-#regulator_raiting svg g rect.bar {
+#regulator_raiting .bar{
     fill: rgb(71, 98, 171); 
     stroke-width: 0px;
-    border-radius: 40px 10px;
+    border-radius: 40px;
 }
