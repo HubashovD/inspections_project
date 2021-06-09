@@ -76,7 +76,7 @@
 
 
         var linepath = d3.line()
-            .x(function(d) {   return x(d.date_start);    })
+            .x(function(d) {  return x(d.date_start); })
             .y(function(d) {  return y(d.ide); });
 
 

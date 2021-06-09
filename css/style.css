@@ -90,20 +90,7 @@
   }
   
   @media (min-width: 992px) and (max-width: 1279px) {
-    .container .header-wrapper,
-    .container .logo-footer,
-    .container .navigation-menu,
-    .container .to-main,
-    .container .about-project,
-    .container .big-stats,
-    .container .section-block,
-    .container .hospital-stats-container,
-    .container .doctor-stats-container,
-    .container .header-line-chart,
-    .container .line-chart-container,
-    .container .how-to-section-wrapper,
-    .container .treemap-wrapper,
-    .container .charity-table-container {
+    .usual-text {
       width: 864px;
     }
   }

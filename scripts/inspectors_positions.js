@@ -71,6 +71,11 @@
 
             // Update the X axis
             y.domain(dataFilter.map(function (d) { return d.clear_position; }))
+            .range([0, 17 * dataFilter.length])
+
+            d3.select("#inspectors_positions").select("svg")
+                .attr("height", 17 * dataFilter.length + 50)
+            
             yAxis.call(d3.axisLeft(y))
 
             // Update the Y axis

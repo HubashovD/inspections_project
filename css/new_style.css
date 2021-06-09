@@ -129,3 +129,7 @@
 #gray-text{
     background-color: rgb(241,241,241);
 }
+
+#line_chart .line{
+    stroke-width: 3px;
+}
