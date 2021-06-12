@@ -11,7 +11,7 @@
 .usual-text{
     font-family: e-UkraineLight;
     line-height: 1.5em;
-    max-width: 70%;
+    max-width: 50%;
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -190,4 +190,8 @@ g.tick line {
 
 .violations_db_pivot{
     grid-column: 2;
+}
+
+.selectButton_3{
+    background-color: white;
 }
