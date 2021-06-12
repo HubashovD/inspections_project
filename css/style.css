@@ -45,7 +45,6 @@
   .container .doctor-stats-container,
   .container .header-line-chart,
   .container .line-chart-container,
-  .container .how-to-section-wrapper,
   .container .treemap-wrapper,
   .container .charity-table-container {
     max-width: 1680px;
@@ -2928,8 +2927,9 @@
     }
   }
   
-  .container .disease-section .how-to-section-wrapper {
+  .container .how-to-section-wrapper {
     margin: 0px auto 0px auto;
+    align-self: center;
   }
   
   @media (max-width: 768px) {

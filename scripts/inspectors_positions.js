@@ -51,7 +51,6 @@
         var yAxis = svg.append("g")
             // .attr("transform", "translate(0," + height + ")")
 
-
         // A function that update the chart
         function update(selectedGroup) {
 
@@ -70,10 +69,10 @@
 
             // Update the X axis
             y.domain(dataFilter.map(function (d) { return d.clear_position; }))
-            .range([0, 17 * dataFilter.length])
+            .range([0, 20 * dataFilter.length])
 
             d3.select("#inspectors_positions").select("svg")
-                .attr("height", 17 * dataFilter.length + 50)
+                .attr("height", 20 * dataFilter.length + 50)
             
             yAxis.call(d3.axisLeft(y))
 
@@ -103,7 +102,7 @@
                     .duration(100)
                     .style("opacity", 1)
                 tooltip
-                    .html("Range: " + d.clear_position + "<br>" + "Value: " + d.ide)
+                    .html(d.clear_position + ": " + d.ide)
                     .style("left", (d3.mouse(this)[0] + 90) + "px")
                     .style("top", (d3.mouse(this)[1]) + "px")
             }
@@ -140,7 +139,10 @@
                 .attr("y", function (d) { return y(d.clear_position); })
                 .attr("height", y.bandwidth())
                 .attr("width",function (d) { return x(d.ide); })
-                .attr("fill", "#69b3a2")
+                .attr("fill", "#6E7DBC")
+                .attr("rx", 6)
+                .attr("ry", 6)
+
 
             // If less group in the new dataset, I delete the ones not in use anymore
             u
@@ -166,11 +168,12 @@
                 .remove()
         }
 
-        // Initialize the plot with the first dataset
-        d3.select("#selectButton_1").on("change", function (d) {
-            // recover the option that has been chosen
-            // run the updateChart function with this selected option
-            update("відділи праці органів місцевого самоврядування")
+        // When the button is changed, run the updateChart function
+    d3.select("#selectButton_1").on("change", function(d) {
+        // recover the option that has been chosen
+        var selectedOption = d3.select(this).property("value")
+        // run the updateChart function with this selected option
+        update(selectedOption)
         })
 
     });

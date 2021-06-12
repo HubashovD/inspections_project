@@ -315,7 +315,6 @@
 
 
 
-
             function brushed() {
 
                 var selection = d3.event.selection;

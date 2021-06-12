@@ -15,6 +15,8 @@
 
     var parseTime = d3.timeParse("%Y-%m");
 
+
+
     //Read the data
     d3.csv("data/line_chart.csv").then(function (data) {
 
@@ -56,8 +58,38 @@
 
         // Add Y axis
         var y = d3.scaleLinear()
-             .domain([0, d3.max(testFilter, function (d) { return +d.ide; })])
+            .domain([0, d3.max(testFilter, function (d) { return +d.ide; })])
             .range([height, 0]);
+
+        // gridlines in x axis function
+        function make_x_gridlines() {
+            return d3.axisBottom(x)
+                .ticks(5)
+        }
+
+        // gridlines in y axis function
+        function make_y_gridlines() {
+            return d3.axisLeft(y)
+                .ticks(5)
+        }
+
+
+        // add the X gridlines
+        svg.append("g")
+            .attr("class", "grid")
+            .attr("transform", "translate(0," + height + ")")
+            .call(make_x_gridlines()
+                .tickSize(-height)
+                .tickFormat("")
+            )
+
+        // add the Y gridlines
+        svg.append("g")
+            .attr("class", "grid")
+            .call(make_y_gridlines()
+                .tickSize(-width)
+                .tickFormat("")
+            )
 
 
         svg.append("g")
@@ -65,7 +97,7 @@
             .call(d3.axisLeft(y));
 
         var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
-            .key(function(d) { return d.status;})
+            .key(function (d) { return d.status; })
             .entries(testFilter);
 
         var group = svg.selectAll(".group")
@@ -76,17 +108,17 @@
 
 
         var linepath = d3.line()
-            .x(function(d) {  return x(d.date_start); })
-            .y(function(d) {  return y(d.ide); });
+            .x(function (d) { return x(d.date_start); })
+            .y(function (d) { return y(d.ide); });
 
 
         group.append("path")
             .attr("class", "line")
-            .attr("d", function(d) {
+            .attr("d", function (d) {
                 return linepath(d.values);
             })
             .attr("fill", "none")
-            .style("stroke", function(d) {
+            .style("stroke", function (d) {
                 return myColor(d.key);
             });
 
@@ -96,8 +128,8 @@
 
 
             var linepath = d3.line()
-                .x(function(d) {   return x(d.date_start);    })
-                .y(function(d) {  return y(d.ide); });
+                .x(function (d) { return x(d.date_start); })
+                .y(function (d) { return y(d.ide); });
 
 
             // Create new data with the selection?
@@ -105,7 +137,7 @@
 
 
             sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
-                .key(function(d) { return d.status;})
+                .key(function (d) { return d.status; })
                 .entries(dataFilter);
 
 
@@ -130,57 +162,57 @@
 
             group.append("path")
                 .attr("class", "line")
-                .attr("d", function(d) {
+                .attr("d", function (d) {
                     return linepath(d.values);
                 })
                 .attr("fill", "none")
-                .style("stroke", function(d) {
+                .style("stroke", function (d) {
                     return myColor(d.key);
                 });
 
 
             // var selection = svg.selectAll(".group")
-           //      .data(sumstat);
-           //
-           //  selection
-           //      .exit()
-           //      .remove();
-           //
-           //  selection.
-           //
-           //
-           //  selection.selectAll(".line")
-           //      .exit()
-           //      .remove();
-           //
-           //
-           //  selection.selectAll(".line")
-           //      .transition()
-           //      .duration(750)
-           //      .attr("d", function(d) {
-           //          return linepath(d.values);
-           //      })
-           //      .attr("fill", "none")
-           //      .style("stroke", function(d) {
-           //          return myColor(d.key);
-           //      });
-           //
-           //
-           //
-           //
-           //  selection
-           //      .enter()
-           //      .append("path")
-           //      .attr("class", ".line")
-           //      .transition()
-           //      .duration(750)
-           //      .attr("d", function(d) {
-           //          return linepath(d.values);
-           //      })
-           //      .attr("fill", "none")
-           //      .style("stroke", function(d) {
-           //          return myColor(d.key);
-           //      });
+            //      .data(sumstat);
+            //
+            //  selection
+            //      .exit()
+            //      .remove();
+            //
+            //  selection.
+            //
+            //
+            //  selection.selectAll(".line")
+            //      .exit()
+            //      .remove();
+            //
+            //
+            //  selection.selectAll(".line")
+            //      .transition()
+            //      .duration(750)
+            //      .attr("d", function(d) {
+            //          return linepath(d.values);
+            //      })
+            //      .attr("fill", "none")
+            //      .style("stroke", function(d) {
+            //          return myColor(d.key);
+            //      });
+            //
+            //
+            //
+            //
+            //  selection
+            //      .enter()
+            //      .append("path")
+            //      .attr("class", ".line")
+            //      .transition()
+            //      .duration(750)
+            //      .attr("d", function(d) {
+            //          return linepath(d.values);
+            //      })
+            //      .attr("fill", "none")
+            //      .style("stroke", function(d) {
+            //          return myColor(d.key);
+            //      });
 
 
 

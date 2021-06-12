@@ -11,7 +11,6 @@
 .usual-text{
     font-family: e-UkraineLight;
     line-height: 1.5em;
-    margin-bottom: 2.5em;
     max-width: 70%;
     display: block;
     margin-block-start: 1em;
@@ -22,9 +21,12 @@
     box-align: justify;
     margin-left: 20%;
     margin-right: 20%;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 #first_graph{
+    background-color:  #E2ECF4;
 }
 
 #selectButton{
@@ -68,7 +70,6 @@
     font-size: 2.9em;
     font-family: e-UkraineLight;
     line-height: 1.5em;
-    margin-bottom: 2.5em;
     max-width: 70%;
     display: block;
     margin-block-start: 1em;
@@ -79,6 +80,7 @@
     box-align: justify;
     margin-left: 20%;
     margin-right: 20%;
+    margin-top: 50px;
 }
 
 #second-graph{
@@ -90,6 +92,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    background-color: #E2ECF4;
 }
 
 #var-3{
@@ -123,7 +126,7 @@
 
 #third-graph{
     font-family: e-UkraineLight;
-    background-color: rgb(241,241,241);
+    background-color:  E2ECF4;
 }
 
 #gray-text{
@@ -132,4 +135,59 @@
 
 #line_chart .line{
     stroke-width: 3px;
+}
+
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+.active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+
+path.domain { 
+    display: none 
+}
+
+g.tick line {
+    display: none 
+}
+
+
+#line_chart svg g g.grid g.tick line {
+    display: block
+    
+}
+
+.container .how-to-section-wrapper{
+    max-width: 1680px;
+}
+
+.graph-box-two{
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.violations_barplot{
+    grid-column: 1;
+}
+
+.violations_db_pivot{
+    grid-column: 2;
 }

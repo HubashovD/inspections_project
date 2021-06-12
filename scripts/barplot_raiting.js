@@ -93,7 +93,7 @@
       .on("mouseleave", hideTooltip)
       .attr("x", function (d) { return x(d.is_planned); })
       .attr("y", function (d) { return y(d.ide); })
-      .attr("width",50)
+      .attr("width",20)
       .attr("height", function (d) { return height - y(d.ide); })
       .attr("fill", "#2171b5")
       .attr("rx", 6)

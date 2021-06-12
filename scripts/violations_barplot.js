@@ -1,36 +1,12 @@
 (function () {
   // create 2 data_set
 
-  Promise.all([
-    d3.csv("data/violations_barplot.csv"),
-    d3.csv("data/violations_barplot.csv")
-  ]).then(function (input) {
 
-    input[0].forEach(function (d) {
-      d.sphere = d.sphere.toString();
-      d.index = +d.index;
-    });
-
-    input[1].forEach(function (d) {
-      d.sphere = d.sphere.toString();
-      d.index = +d.index;
-    });
-
-    update(input[0]);
-
-    d3.select("#var-1").on("click", function () {
-      update(input[0])
-    });
-
-    d3.select("#var-2").on("click", function () {
-      update(input[1]);
-    })
-  });
 
 
   // set the dimensions and margins of the graph
   var margin = { top: 20, right: 30, bottom: 50, left: 100 },
-    width = 500 - margin.left - margin.right,
+    width = 300 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -41,25 +17,25 @@
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  d3.csv("data/violations_barplot.csv").then(function (data) {
 
-  // Initialize the X axis
-  var y = d3.scaleBand()
-    .range([0, height])
-    .padding(0.2);
+    // Initialize the X axis
+    var y = d3.scaleBand()
+      .range([0, height])
+      .padding(0.2);
 
-  var yAxis = svg.append("g")
-  // .attr("transform", "translate(0," + width + ")")
+    var yAxis = svg.append("g")
+    // .attr("transform", "translate(0," + width + ")")
 
-  // Initialize the Y axis
-  var x = d3.scaleLinear()
-    .range([0, width]);
+    // Initialize the Y axis
+    var x = d3.scaleLinear()
+      .range([0, width]);
 
-  var xAxis = svg.append("g")
-    .attr("class", "myXaxis");
+    var xAxis = svg.append("g")
+      .attr("class", "myXaxis")
+      .style("display", "none");
 
-  // A function that create / update the plot for a given variable:
-  function update(data) {
-
+    // A function that create / update the plot for a given variable:
     // Update the X axis
     y.domain(data.map(function (d) { return d.sphere; }))
     yAxis.call(d3.axisLeft(y))
@@ -93,8 +69,8 @@
         .duration(100)
         .style("opacity", 1)
       tooltip
-        .html("Орган: " + d.sphere + "<br>" + "кількість порушень на одну перевірку: " + d.index 
-        +"<br>"+"Порушень: "+ d.Column+"<br>"+"Перевірок: "+d.ide)
+        .html("Орган: " + d.sphere + "<br>" + "кількість порушень на одну перевірку: " + d.index
+          + "<br>" + "Порушень: " + d.Column + "<br>" + "Перевірок: " + d.ide)
         .style("left", (d3.mouse(this)[0] + 90) + "px")
         .style("top", (d3.mouse(this)[1]) + "px")
     }
@@ -129,7 +105,7 @@
       .duration(1000)
       .attr("x", 0)
       .attr("y", function (d) { return y(d.sphere); })
-      .attr("height", y.bandwidth())
+      .attr("height", 20)
       .attr("width", function (d) { return x(d.index); })
       .attr("fill", "#2171b5")
       .attr("rx", 6)
@@ -142,8 +118,26 @@
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseleave", hideTooltip)
-  }
+
+    var label = svg.selectAll(".bar-labels")
+      .data(data)
+
+    label
+      .enter()
+      .append("text")
+      .attr("class", "bar-labels")
+      .merge(label)
+      .transition() // and apply changes to all of them
+      .duration(1000)
+      .attr("x", function (d) { return x(d.index); })
+      .attr("y", function (d) { return y(d.sphere) + 10; })
+      .text(function (d) { return d.ide; });
+
+    label
+      .exit()
+      .remove()
+
+  })
 
 
-
-})();
+}) ();

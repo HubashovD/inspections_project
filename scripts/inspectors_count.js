@@ -23,6 +23,7 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
   // List of groups = species here = value of the first column called group -> I show them on the X axis
   var groups = d3.map(data, function(d){return(d.regions)}).keys()
 
+
   // Add X axis
   var x = d3.scaleBand()
       .domain(groups)
@@ -95,7 +96,6 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
       .style("opacity", 0)
   }
   
-
   // Show the bars
   svg.append("g")
     .selectAll("g")
@@ -113,7 +113,7 @@ d3.csv("data/regions_pib_pivoted.csv").then(function(data) {
         .attr("y", function(d) { return y(d[1]); })
         .attr("height", function(d) { return y(d[0]) - y(d[1]); })
         .attr("width",x.bandwidth())
-        .attr("stroke", "grey")
+        .attr("stroke", "none")
         .attr("rx", 6)
         .attr("ry", 6)
       .on("mouseover", mouseover)
