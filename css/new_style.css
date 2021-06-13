@@ -76,9 +76,13 @@
     margin-inline-end: 0px;
     padding: 0;
     box-align: justify;
-    margin-left: 20%;
+    margin-left: 12.5%;
     margin-right: 20%;
+    margin-bottom: 50px;
     margin-top: 50px;
+    position: relative;
+    width: 67%;
+    max-width: 50%;
 }
 
 #second-graph {
@@ -174,18 +178,6 @@ g.tick line {
     max-width: 1680px;
 }
 
-.graph-box-two {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.violations_barplot {
-    grid-column: 1;
-}
-
-.violations_db_pivot {
-    grid-column: 2;
-}
-
 .back-color {
     background-color: #E2ECF4;
     width: 100%;
@@ -240,5 +232,65 @@ g.tick line {
 }
 
 #inspectors_count .tooltip {
+    position: absolute;
+}
+
+.graph-box-two {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    padding: auto;
+}
+
+#violations_barplot {
+    grid-column: 1;
+    position: relative;
+    max-width: 50%;
+    margin-left: 12.5%;
+}
+
+#violations_barplot .tooltip {
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+}
+
+#violations_db_pivot {
+    grid-column: 2;
+    position: relative;
+    max-width: 50%;
+    margin-left: 12.5%;
+}
+
+#violations_db_pivot .tooltip {
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+}
+
+#inspectors_positions {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 50%;
+    margin-left: 12.5%;
+    margin-right: 20%;
+}
+
+#inspectors_positions .tooltip {
+    position: absolute;
+}
+
+#inspectors_db_true_merged_2 {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-left: 12.5%;
+    margin-right: 20%;
+}
+
+#inspectors_db_true_merged_2 .tooltip {
     position: absolute;
 }

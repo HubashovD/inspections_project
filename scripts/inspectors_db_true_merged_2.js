@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     var scatter_margin = { top: 120, right: 30, bottom: 30, left: 60 },
         scatter_margin2 = { top: 30, right: 30, bottom: 30, left: 60 },
@@ -103,16 +103,17 @@
         .attr("width", 0.5)
         .attr("x", 0);
 
-    d3.csv("data/inspectors_db_true_merged.csv").then(function (input) {
+    d3.csv("data/inspectors_db_true_merged.csv").then(function(input) {
+
 
         // format the data
-        input.forEach(function (d) {
+        input.forEach(function(d) {
             d.viol_sum = +d.viol_sum;
             d.insp_count = +d.insp_count;
             d.sphere = d.sphere.toString();
         });
 
-        var allGroup = d3.map(input, function (d) { return (d.sphere) }).keys();
+        var allGroup = d3.map(input, function(d) { return (d.sphere) }).keys();
 
         // add the options to the button
         d3.select("#selectButton_3")
@@ -120,9 +121,8 @@
             .data(allGroup)
             .enter()
             .append('option')
-            .text(function (d) { return d; }) // text showed in the menu
-            .attr("value", function (d) { return d; }) // corresponding value returned
-
+            .text(function(d) { return d; }) // text showed in the menu
+            .attr("value", function(d) { return d; }) // corresponding value returned
 
 
 
@@ -133,28 +133,32 @@
 
         function draw_scatter(filtered_val) {
 
-            var filtered = input.filter(function (d) { return d.sphere == filtered_val });
+
+            var filtered = input.filter(function(d) { return d.sphere == filtered_val });
 
             scatter_x
                 .range([0, scatter_width])
-                .domain([0, d3.max(filtered, function (d) { return d.viol_sum })])
+                .domain([0, d3.max(filtered, function(d) { return d.viol_sum })])
 
             scatter_x2
                 .range([0, scatter_width])
-                .domain([0, d3.max(filtered, function (d) { return d.viol_sum })])
+                .domain([0, d3.max(filtered, function(d) { return d.viol_sum })])
 
             scatter_y
                 .range([scatter_height, 0])
-                .domain([0, d3.max(filtered, function (d) { return d.insp_count })]);
+                .domain([0, d3.max(filtered, function(d) { return d.insp_count })]);
 
             scatter_y2
                 .range([scatter_height2, 0])
-                .domain([0, d3.max(filtered, function (d) { return d.insp_count })]);
+                .domain([0, d3.max(filtered, function(d) { return d.insp_count })]);
 
-            scatter_rScale.domain([0, d3.max(filtered, function (d) { return d.viol_sum })]);
+            scatter_rScale.domain([0, d3.max(filtered, function(d) { return d.viol_sum })]);
 
             var brush = d3.brushX()
-                .extent([[0, 0], [scatter_width, scatter_height2]])
+                .extent([
+                    [0, 0],
+                    [scatter_width, scatter_height2]
+                ])
                 .on("brush", brushed);
 
 
@@ -174,8 +178,7 @@
             focus.select(".axis.axis--y")
                 .transition()
                 .duration(500)
-                .call(d3.axisLeft(scatter_y)
-                );
+                .call(d3.axisLeft(scatter_y));
 
 
             context.select(".axis.axis--x")
@@ -211,17 +214,17 @@
             focusDots.exit().remove();
 
             focusDots
-                .attr("data-tippy-content", function (d) {
+                .attr("data-tippy-content", function(d) {
                     let tipyAmount = d.viol_sum >= 1000 ? moneyFormat(d.viol_sum) : Math.round(d.viol_sum);
                     return "<b>" + d.wide_cat + '</b><br>' + d.date + ": " + tipyAmount + " грн"
                 })
                 .transition()
                 .duration(500)
-                .attr("r", function (d) { return scatter_rScale(d.viol_sum) })
-                .attr("cx", function (d) {
+                .attr("r", function(d) { return scatter_rScale(d.viol_sum) })
+                .attr("cx", function(d) {
                     return scatter_x(d.viol_sum);
                 })
-                .attr("cy", function (d) {
+                .attr("cy", function(d) {
                     return scatter_y(d.insp_count);
                 });
 
@@ -242,35 +245,34 @@
                 .style("fill", "#007EFF80")
                 .style("stroke", "#007EFF")
                 //.attr("r", 5)
-                .attr("r", function (d) { return scatter_rScale(d.viol_sum) })
+                .attr("r", function(d) { return scatter_rScale(d.viol_sum) })
                 .style("opacity", 1)
-                .attr("cx", function (d) {
+                .attr("cx", function(d) {
                     return scatter_x(d.viol_sum);
                 })
-                .attr("cy", function (d) {
+                .attr("cy", function(d) {
                     return scatter_y(d.insp_count);
                 })
-                .on("mouseover", function (d) {
-                    d3.selectAll(".focus-dot").attr("r", function (d) { return scatter_rScale(d.viol_sum) })
+                .on("mouseover", function(d) {
+                    d3.selectAll(".focus-dot").attr("r", function(d) { return scatter_rScale(d.viol_sum) })
                     d3.select(this).attr("r", 10);
                     tooltip
                         .style("opacity", 1);
                 })
-                .on("mouseout", function (d) {
+                .on("mouseout", function(d) {
                     d3.selectAll(".focus-dot")
-                        .attr("r", function (d) { return scatter_rScale(d.viol_sum) })
+                        .attr("r", function(d) { return scatter_rScale(d.viol_sum) })
                     tooltip
                         .transition()
                         .duration(200)
                         .style("opacity", 0);
                 })
-                .on("mousemove", function (d) {
+                .on("mousemove", function(d) {
                     tooltip
                         .html(d.pib + "<br>" + "кількість знайдених порушень: " + d.viol_sum + "<br>" + "кількість перевірок:  " + d.insp_count)
                         .style("left", (d3.mouse(this)[0] + 90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
                         .style("top", (d3.mouse(this)[1]) + "px")
-                })
-                ;
+                });
 
 
 
@@ -289,10 +291,10 @@
                 .duration(500)
                 .attr("r", 3)
                 .style("opacity", 0.5)
-                .attr("cx", function (d) {
+                .attr("cx", function(d) {
                     return scatter_x2(d.viol_sum);
                 })
-                .attr("cy", function (d) {
+                .attr("cy", function(d) {
                     return scatter_y2(d.insp_count);
                 });
 
@@ -303,10 +305,10 @@
                 // .style("stroke", "#007EFF")
                 .attr("r", 2.5)
                 .style("opacity", .2)
-                .attr("cx", function (d) {
+                .attr("cx", function(d) {
                     return scatter_x2(d.viol_sum);
                 })
-                .attr("cy", function (d) {
+                .attr("cy", function(d) {
                     return scatter_y2(d.insp_count);
                 });
 
@@ -331,29 +333,29 @@
                     handle.attr("display", "none");
                     handleLines.attr("display", "none");
                 } else {
-                    handleLines.attr("display", null).attr("transform", function (d, i) { return "translate(" + [selection[i], - 30 / 4] + ")"; });
-                    handle.attr("display", null).attr("transform", function (d, i) { return "translate(" + [selection[i], - 30 / 4] + ")"; });
+                    handleLines.attr("display", null).attr("transform", function(d, i) { return "translate(" + [selection[i], -30 / 4] + ")"; });
+                    handle.attr("display", null).attr("transform", function(d, i) { return "translate(" + [selection[i], -30 / 4] + ")"; });
                 }
 
                 scatter_x.domain(selection.map(scatter_x2.invert, scatter_x2));
 
                 focus.selectAll(".focus-dot")
-                    .attr("cx", function (d) {
+                    .attr("cx", function(d) {
                         return scatter_x(d.viol_sum);
                     })
-                    .attr("cy", function (d) {
+                    .attr("cy", function(d) {
                         return scatter_y(d.insp_count);
                     });
 
                 focus.select(".axis--x").call(
                     d3.axisBottom(scatter_x)
-                        .ticks(5));
+                    .ticks(5));
             }
 
         }
 
 
-        d3.select("#selectButton_3").on("change", function (d) {
+        d3.select("#selectButton_3").on("change", function(d) {
             // recover the option that has been chosen
             var selectedOption = d3.select(this).property("value");
             // run the updateChart function with this selected option

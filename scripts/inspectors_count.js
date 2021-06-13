@@ -95,7 +95,7 @@
         }
         var mouseleave = function(d) {
             tooltip
-                .style("opacity", 0)
+                .style("opacity", 1)
         }
 
         // Show the bars
