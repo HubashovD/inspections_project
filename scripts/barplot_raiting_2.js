@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     // set the dimensions and margins of the graph
     var margin = { top: 30, right: 1, bottom: 70, left: 1 },
@@ -27,20 +27,20 @@
     ];
 
     var data3 = [
-        { group: "планова", value: 15.12},
+        { group: "планова", value: 15.12 },
         { group: "позапланова", value: 9.19 }
     ];
 
 
-    d3.select("#var-3").on("click", function () {
+    d3.select("#var-3").on("click", function() {
         update(data1);
     });
 
-    d3.select("#var-4").on("click", function () {
+    d3.select("#var-4").on("click", function() {
         update(data2);
     });
 
-    d3.select("#var-5").on("click", function () {
+    d3.select("#var-5").on("click", function() {
         update(data3);
     });
 
@@ -64,11 +64,11 @@
 
     function update(data) {
         // Update the X axis
-        x.domain(data.map(function (d) { return d.group; }))
+        x.domain(data.map(function(d) { return d.group; }))
         xAxis.call(d3.axisBottom(x))
 
         // Update the Y axis
-        y.domain([0, d3.max(data, function (d) { return d.value })]);
+        y.domain([0, d3.max(data, function(d) { return d.value })]);
         yAxis.transition().duration(1000).call(d3.axisLeft(y));
 
 
@@ -86,23 +86,23 @@
             .style("padding", "10px")
 
         // Three function that change the tooltip when user hover / move / leave a cell
-        var showTooltip = function (d) {
+        var showTooltip = function(d) {
             tooltip
                 .transition()
                 .duration(100)
                 .style("opacity", 1)
             tooltip
-                .html(d.group + "<br>" +  d.value)
+                .html(d.group + "<br>" + d.value)
                 .style("left", (d3.mouse(this)[0] + 90) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
         }
-        var moveTooltip = function (d) {
-            tooltip
-                .style("left", (d3.mouse(this)[0] + 90) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
-        }
-        // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
-        var hideTooltip = function (d) {
+        var moveTooltip = function(d) {
+                tooltip
+                    .style("left", (d3.mouse(this)[0] + 90) + "px")
+                    .style("top", (d3.mouse(this)[1]) + "px")
+            }
+            // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+        var hideTooltip = function(d) {
             tooltip
                 .transition()
                 .duration(100)
@@ -113,7 +113,7 @@
         var u = svg.selectAll("rect")
             .data(data)
 
-        
+
         u
             .enter()
             .append("rect") // Add a new rect for each new elements
@@ -123,11 +123,11 @@
             .merge(u) // get the already existing elements as well
             .transition() // and apply changes to all of them
             .duration(1000)
-            .attr("x", function (d) { return x(d.group); })
-            .attr("y", function (d) { return y(d.value); })
+            .attr("x", function(d) { return x(d.group); })
+            .attr("y", function(d) { return y(d.value); })
             .attr("width", x.bandwidth())
-            .attr("height", function (d) { return height - y(d.value); })
-            .attr("fill", "#2171b5")
+            .attr("height", function(d) { return height - y(d.value); })
+            .attr("fill", "#4562AB")
             .attr("rx", 6)
             .attr("ry", 6)
 
@@ -147,19 +147,19 @@
             .merge(label)
             .transition() // and apply changes to all of them
             .duration(1000)
-            .attr("x", function (d) { return x(d.group);})
-            .attr("y", function (d) { return y(d.value);})
-            .text(function (d){return d.value;});
-        
+            .attr("x", function(d) { return x(d.group); })
+            .attr("y", function(d) { return y(d.value); })
+            .text(function(d) { return d.value; });
+
         label
             .exit()
             .remove()
 
-        
-        
-};
 
- // Initialize the plot with the first dataset
- update(data1)
+
+    };
+
+    // Initialize the plot with the first dataset
+    update(data1)
 
 })();

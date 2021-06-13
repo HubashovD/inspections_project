@@ -102,7 +102,7 @@
             .attr("y", function(d) { return y(d.sphere); })
             .attr("height", 20)
             .attr("width", function(d) { return x(d.raiting); })
-            .attr("fill", "#2171b5")
+            .attr("fill", "#4562AB")
             .attr("rx", 6)
             .attr("ry", 6)
 

@@ -101,7 +101,7 @@
             .attr("y", function(d) { return y(d.reason_bas); })
             .attr("height", 20)
             .attr("width", function(d) { return x(d.status); })
-            .attr("fill", "#2171b5")
+            .attr("fill", "#4562AB")
             .attr("rx", 6)
             .attr("ry", 6)
 

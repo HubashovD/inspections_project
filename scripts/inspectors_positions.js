@@ -139,7 +139,7 @@
                 .attr("y", function(d) { return y(d.clear_position); })
                 .attr("height", y.bandwidth())
                 .attr("width", function(d) { return x(d.ide); })
-                .attr("fill", "#6E7DBC")
+                .attr("fill", "#4562AB")
                 .attr("rx", 6)
                 .attr("ry", 6)
 

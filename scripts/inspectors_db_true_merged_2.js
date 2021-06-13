@@ -242,8 +242,8 @@
             focusDots
                 .enter().append("circle")
                 .attr('class', 'focus-dot tip')
-                .style("fill", "#007EFF80")
-                .style("stroke", "#007EFF")
+                .style("fill", "#4562AB")
+                // .style("stroke", "#007EFF")
                 //.attr("r", 5)
                 .attr("r", function(d) { return scatter_rScale(d.viol_sum) })
                 .style("opacity", 1)
@@ -301,7 +301,7 @@
             brushDots
                 .enter().append("circle")
                 .attr("class", "dot-context")
-                .style("fill", "red")
+                .style("fill", "#4562AB")
                 // .style("stroke", "#007EFF")
                 .attr("r", 2.5)
                 .style("opacity", .2)

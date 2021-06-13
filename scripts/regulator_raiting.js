@@ -61,7 +61,8 @@
         .range([0, width]);
 
     var xAxis = svg.append("g")
-        .attr("class", "myXaxis");
+        .attr("class", "myXaxis")
+        .style("display", "none");
 
     // A function that create / update the plot for a given variable:
     function update(data) {
