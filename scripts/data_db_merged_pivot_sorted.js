@@ -1,7 +1,7 @@
 (function () {
     // set the dimensions and margins of the graph
     var margin = { top: 20, right: 30, bottom: 50, left: 100 },
-      width = 500 - margin.left - margin.right,
+      width = d3.select("#data_db_merged_pivot_sorted").node().getBoundingClientRect().width - margin.left - margin.right,
       height = 700 - margin.top - margin.bottom;
   
     // append the svg object to the body of the page

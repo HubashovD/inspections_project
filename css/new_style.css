@@ -1,17 +1,8 @@
-#background{
+#background {}
 
-}
-
-.graph-box {
-    margin-left: 20%;
-    margin-right: 20%;
-    position: relative;
-}
-
-.usual-text{
+.usual-text {
     font-family: e-UkraineLight;
     line-height: 1.5em;
-    max-width: 50%;
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -19,58 +10,65 @@
     margin-inline-end: 0px;
     padding: 0;
     box-align: justify;
-    margin-left: 20%;
+    margin-left: 12.5%;
     margin-right: 20%;
     margin-bottom: 50px;
     margin-top: 50px;
+    width: calc(67% - 36px);
+    position: relative;
+    width: 67%;
+    max-width: 50%;
 }
 
-#first_graph{
-    background-color:  #E2ECF4;
-}
-
-#selectButton{
-    grid-row: 1;
-    -ms-grid-column: 1;
-    grid-column: 1;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
+#selectButton,
+#selectButton_3,
+#selectButton_1 {
     flex-direction: column;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
     align-items: flex-end;
     position: relative;
     cursor: pointer;
     background-color: white;
-    border: none;
     font-family: e-UkraineLight;
+    max-width: 50%;
+    margin-left: 12.5%;
+    margin-right: 20%;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    border: 2px solid black;
+    padding: 12px 56px;
+    border-radius: 40px;
 }
 
-#var-1, #var-2, #var-3, #var-4, #var-5, #var-6{
-    background-image: linear-gradient(90deg, #4f4fff, #bb829e);
-    border: none;
+#var-1,
+#var-2,
+#var-3,
+#var-4,
+#var-5,
+#var-6 {
     font-family: e-UkraineLight;
     display: inline-block;
     font-size: 1em;
     border: 2px solid black;
-    padding: 12px 56px;
     border-radius: 40px;
     background-color: black;
-    color: white;
     cursor: pointer;
     background-origin: border-box;
     border: 2px solid transparent;
+    position: relative;
+    border: 2px solid black;
+    padding: 12px 56px;
+    border-radius: 40px;
+    transition: opacity .5s;
+    background-color: white;
+    margin-bottom: 20px;
+    align-self: center;
 }
 
-.small-header{
+.small-header {
     font-size: 2.9em;
     font-family: e-UkraineLight;
     line-height: 1.5em;
-    max-width: 70%;
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -83,60 +81,57 @@
     margin-top: 50px;
 }
 
-#second-graph{
-    margin-left:auto;
-    margin-right:auto;
-    height:auto; 
-    width:auto;
+#second-graph {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 50%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-    background-color: #E2ECF4;
+    max-width: 70%;
+    margin-left: 12.5%;
+    margin-right: 20%;
 }
 
-#var-3{
+#var-3 {
     grid-column: 2;
     grid-row: 1;
     display: block;
 }
 
-#var-4{
+#var-4 {
     grid-column: 2;
     grid-row: 2;
     display: block;
 }
 
-#var-5{
+#var-5 {
     grid-column: 2;
     grid-row: 3;
     display: block;
 }
 
-#second-graph-grid{
-}
-#second-graph-grid-buttons{
+#second-graph-grid {}
+
+#second-graph-grid-buttons {
     grid-column: 2;
     grid-row: 1;
 }
-#second-graph-grid-graph{
+
+#second-graph-grid-graph {
     grid-column: 1;
     grid-row: 1;
 }
 
-#third-graph{
-    font-family: e-UkraineLight;
-    background-color:  E2ECF4;
+#gray-text {
+    background-color: rgb(241, 241, 241);
 }
 
-#gray-text{
-    background-color: rgb(241,241,241);
-}
-
-#line_chart .line{
+#line_chart .line {
     stroke-width: 3px;
 }
-
 
 .collapsible {
     background-color: #777;
@@ -148,50 +143,102 @@
     text-align: left;
     outline: none;
     font-size: 15px;
-  }
-  
-.active, .collapsible:hover {
+}
+
+.active,
+.collapsible:hover {
     background-color: #555;
-  }
-  
+}
+
 .content {
     padding: 0 18px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
-  }
+}
 
-path.domain { 
-    display: none 
+path.domain {
+    display: none
 }
 
 g.tick line {
-    display: none 
+    display: none
 }
-
 
 #line_chart svg g g.grid g.tick line {
     display: block
-    
 }
 
-.container .how-to-section-wrapper{
+.container .how-to-section-wrapper {
     max-width: 1680px;
 }
 
-.graph-box-two{
+.graph-box-two {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.violations_barplot{
+.violations_barplot {
     grid-column: 1;
 }
 
-.violations_db_pivot{
+.violations_db_pivot {
     grid-column: 2;
 }
 
-.selectButton_3{
-    background-color: white;
+.back-color {
+    background-color: #E2ECF4;
+    width: 100%;
+    padding: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#data_db_merged_pivot_sorted {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 50%;
+    margin-left: 12.5%;
+    margin-right: 20%;
+}
+
+#line_chart {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 50%;
+    margin-left: 12.5%;
+    margin-right: 20%;
+}
+
+#two-buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left: 12.5%;
+    margin-right: 20%;
+    max-width: 50%;
+}
+
+#regulator_raiting {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 50%;
+    margin-left: 12.5%;
+    margin-right: 20%;
+}
+
+#inspectors_count {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 50%;
+    margin-left: 12.5%;
+    margin-right: 20%;
+}
+
+#inspectors_count .tooltip {
+    position: absolute;
 }
