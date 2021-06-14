@@ -1,6 +1,72 @@
-#background {}
+@font-face {
+    font-family: e-UkraineLight;
+    src: url(../e-Ukraine-Light.woff);
+}
+
+@font-face {
+    font-family: e-UkraineRegular;
+    src: url(../e-Ukraine-Regular.woff);
+}
+
+@font-face {
+    font-family: e-UkraineHead;
+    src: url(../e-UkraineHead-NAME.otf);
+}
+
+@media (min-width: 1680px) {
+    #second-graph {
+        width: 1408px;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1679px) {
+    #second-graph,
+    #line_chart,
+    #inspectors_count,
+    #regulator_raiting,
+    #inspectors_db_true_merged_2 {
+        width: 1120px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1279px) {
+    .usual-text {
+        width: 864px;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 480px) {
+    #second-graph,
+    #line_chart,
+    #inspectors_count,
+    #regulator_raiting,
+    #inspectors_db_true_merged_2 {
+        width: 95%;
+    }
+}
+
+@media (max-width: 479px) {
+    #second-graph,
+    #line_chart,
+    #inspectors_count,
+    #regulator_raiting,
+    #inspectors_db_true_merged_2 {
+        width: 95%;
+    }
+    .usual-text {
+        width: 95%;
+    }
+    #var-3,
+    #var-4,
+    #var-5 {
+        width: 50%;
+    }
+}
 
 .usual-text {
+    line-height: 1.5em;
+    margin-bottom: 2.5em;
+    max-width: 70%;
     font-family: e-UkraineLight;
     line-height: 1.5em;
     display: block;
@@ -17,7 +83,6 @@
     width: calc(67% - 36px);
     position: relative;
     width: 67%;
-    max-width: 50%;
 }
 
 #selectButton,
@@ -66,10 +131,11 @@
 }
 
 .small-header {
-    font-size: 2.9em;
+    font-size: 1.7em;
+    margin-bottom: 1em;
+    display: block;
     font-family: e-UkraineLight;
     line-height: 1.5em;
-    display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
@@ -78,7 +144,6 @@
     box-align: justify;
     margin-left: 12.5%;
     margin-right: 20%;
-    margin-bottom: 50px;
     margin-top: 50px;
     position: relative;
     width: 67%;
@@ -116,8 +181,6 @@
     grid-row: 3;
     display: block;
 }
-
-#second-graph-grid {}
 
 #second-graph-grid-buttons {
     grid-column: 2;
@@ -181,7 +244,8 @@ g.tick line {
 .back-color {
     background-color: #E2ECF4;
     width: 100%;
-    padding: auto;
+    padding-top: 30px;
+    padding-bottom: 10px;
     margin-top: 5%;
     margin-bottom: 5%;
 }

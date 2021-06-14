@@ -19,6 +19,10 @@
 
     d3.csv("data/violations_barplot.csv").then(function(data) {
 
+        data.forEach(function(d) {
+            d.index = +d.index;
+        });
+
         // Initialize the X axis
         var y = d3.scaleBand()
             .range([0, height])

@@ -13,8 +13,12 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     d3.csv("data/data_db_merged_pivot_sorted.csv").then(function(data) {
-        console.log(data)
-            // Initialize the X axis
+        data.forEach(function(d) {
+            d.status = +d.status;
+        });
+
+
+        // Initialize the X axis
         var y = d3.scaleBand()
             .range([0, height])
             .padding(0.2);

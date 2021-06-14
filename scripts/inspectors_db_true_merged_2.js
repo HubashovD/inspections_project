@@ -2,7 +2,7 @@
 
     var scatter_margin = { top: 120, right: 30, bottom: 30, left: 60 },
         scatter_margin2 = { top: 30, right: 30, bottom: 30, left: 60 },
-        scatter_width = 700 - scatter_margin.left - scatter_margin.right,
+        scatter_width = d3.select("#inspectors_db_true_merged_2").node().getBoundingClientRect().width - scatter_margin.left - scatter_margin.right,
         scatter_height = 700 - scatter_margin.top - scatter_margin.bottom,
         scatter_height2 = 100 - scatter_margin2.top - scatter_margin2.bottom;
 

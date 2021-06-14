@@ -14,6 +14,10 @@
 
     d3.csv("data/violations_db_pivot.csv").then(function(data) {
 
+        data.forEach(function(d) {
+            d.raiting = +d.raiting;
+        });
+
         // Initialize the X axis
         var y = d3.scaleBand()
             .range([0, height])
