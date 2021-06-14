@@ -7,34 +7,30 @@
     ]).then(function(data) {
 
         data[0].forEach(function(d) {
-            d.regulator = d.regulator.toString();
+            d.short_name = d.short_name.toString();
             d.ide = +d.ide;
         });
 
         data[1].forEach(function(d) {
-            d.regulator = d.regulator.toString();
+            d.short_name = d.short_name.toString();
             d.ide = +d.ide;
         });
 
-        update(data[0]);
-        console.log(data[0])
-        console.log(data[1])
+        update(data[1]);
 
 
         d3.select("#var-1").on("click", function() {
             update(data[0]);
-            console.log(data[0]);
         });
 
         d3.select("#var-2").on("click", function() {
             update(data[1]);
-            console.log(data[1]);
         });
     });
 
 
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 30, bottom: 50, left: 250 },
+    var margin = { top: 20, right: 30, bottom: 0, left: 250 },
         width = d3.select("#regulator_raiting").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
@@ -48,9 +44,7 @@
 
 
     // Initialize the X axis
-    var y = d3.scaleBand()
-        .range([0, height])
-        .padding(0.2);
+
 
     var yAxis = svg.append("g")
         // .attr("transform", "translate(0," + width + ")")
@@ -58,7 +52,7 @@
 
     // Initialize the Y axis
     var x = d3.scaleLinear()
-        .range([0, width]);
+        .range([0, width - 10]);
 
     var xAxis = svg.append("g")
         .attr("class", "myXaxis")
@@ -67,9 +61,14 @@
     // A function that create / update the plot for a given variable:
     function update(data) {
 
+        var y = d3.scaleBand()
+            .range([0, height])
+            .padding(0.2);
+
         // Update the X axis
-        y.domain(data.map(function(d) { return d.regulator; }))
-            .range([0, 20 * data.length])
+        y.domain(data.map(function(d) { return d.short_name; }))
+            .range([0, 25 * data.length])
+            .padding([0.2])
 
         d3.select("#inspectors_positions").select("svg")
             .attr("height", 20 * data.length + 50)
@@ -105,7 +104,7 @@
                 .duration(100)
                 .style("opacity", 1)
             tooltip
-                .html("Range: " + d.regulator + "<br>" + "Value: " + d.ide)
+                .html(d.sphere + "<br>" + d.ide + " перевірок")
                 .style("left", (d3.mouse(this)[0] + 90) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
         }
@@ -138,8 +137,8 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", 0)
-            .attr("y", function(d) { return y(d.regulator); })
-            .attr("height", y.bandwidth())
+            .attr("y", function(d) { return y(d.short_name); })
+            .attr("height", 20)
             .attr("width", function(d) { return x(d.ide); })
             .attr("rx", 6)
             .attr("ry", 6)
@@ -164,7 +163,7 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", function(d) { return x(d.ide); })
-            .attr("y", function(d) { return y(d.regulator) + 10; })
+            .attr("y", function(d) { return y(d.short_name) + 10; })
             .text(function(d) { return d.ide; });
 
         label

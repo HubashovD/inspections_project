@@ -1,11 +1,6 @@
 (function() {
-    // create 2 data_set
-
-
-
-
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 0, bottom: 50, left: 100 },
+    var margin = { top: 20, right: 0, bottom: 50, left: 200 },
         width = d3.select("#violations_barplot").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
@@ -21,6 +16,9 @@
 
         data.forEach(function(d) {
             d.index = +d.index;
+            d.rate = +d.rate;
+            d.ide = +d.ide;
+            d.Column = +d.Column;
         });
 
         // Initialize the X axis
@@ -33,7 +31,7 @@
 
         // Initialize the Y axis
         var x = d3.scaleLinear()
-            .range([0, width]);
+            .range([0, width - 50]);
 
         var xAxis = svg.append("g")
             .attr("class", "myXaxis")
@@ -41,7 +39,7 @@
 
         // A function that create / update the plot for a given variable:
         // Update the X axis
-        y.domain(data.map(function(d) { return d.sphere; }))
+        y.domain(data.map(function(d) { return d.short_name; }))
         yAxis.call(d3.axisLeft(y))
             .selectAll("text")
             .attr("transform", "translate(-10,0)")
@@ -73,7 +71,7 @@
                 .duration(100)
                 .style("opacity", 1)
             tooltip
-                .html("Орган: " + d.sphere + "<br>" + "кількість порушень на одну перевірку: " + d.index +
+                .html(d.sphere + "<br>" + "Кількість порушень на одну перевірку: " + d.index +
                     "<br>" + "Порушень: " + d.Column + "<br>" + "Перевірок: " + d.ide)
                 .style("left", (d3.mouse(this)[0] + 90) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
@@ -108,7 +106,7 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", 0)
-            .attr("y", function(d) { return y(d.sphere); })
+            .attr("y", function(d) { return y(d.short_name); })
             .attr("height", 20)
             .attr("width", function(d) { return x(d.index); })
             .attr("fill", "#4562AB")
@@ -133,9 +131,9 @@
             .merge(label)
             .transition() // and apply changes to all of them
             .duration(1000)
-            .attr("x", function(d) { return x(d.index); })
-            .attr("y", function(d) { return y(d.sphere) + 10; })
-            .text(function(d) { return d.ide; });
+            .attr("x", function(d) { return x(d.index) + 2; })
+            .attr("y", function(d) { return y(d.short_name) + 15; })
+            .text(function(d) { return d.index; });
 
         label
             .exit()

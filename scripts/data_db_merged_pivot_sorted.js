@@ -51,7 +51,7 @@
         // ----------------
         // Create a tooltip
         // ----------------
-        var tooltip = d3.select("#violations_barplot")
+        var tooltip = d3.select("#data_db_merged_pivot_sorted")
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
@@ -68,7 +68,10 @@
                 .duration(100)
                 .style("opacity", 1)
             tooltip
-                .html(d.reason_bas)
+                .html("Причина проведення: " + d.reason_bas + "<br>" + "Кількість проведених перевірок: " + "<b>" +
+                    d.status + "</b>" +
+                    "<br>" + "Кількість знайдених порушень: " + "<b>" + d.violation_id + "</b>" +
+                    "<br>" + "Середня кількість порушень знайдених під час однієї перевірки: " + "<b>" + d.rate + "</b>")
                 .style("left", (d3.mouse(this)[0] + 90) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
         }
@@ -82,7 +85,7 @@
             tooltip
                 .transition()
                 .duration(100)
-                .style("opacity", 0)
+                .style("opacity", 1)
         }
 
 
@@ -97,7 +100,7 @@
             .attr("class", "bar")
             .on("mouseover", showTooltip)
             .on("mousemove", moveTooltip)
-            .on("mouseleave", hideTooltip)
+            // .on("mouseleave", hideTooltip)
             .merge(u) // get the already existing elements as well
             .transition() // and apply changes to all of them
             .duration(1000)

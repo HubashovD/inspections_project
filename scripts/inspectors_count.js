@@ -1,7 +1,7 @@
 (function() {
 
     // set the dimensions and margins of the graph
-    var margin = { top: 30, right: 30, bottom: 70, left: 100 },
+    var margin = { top: 30, right: 30, bottom: 70, left: 160 },
         width = d3.select("#inspectors_count").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 800 - margin.top - margin.bottom;
 
@@ -55,7 +55,10 @@
                 "#4292c6",
                 "#2171b5",
                 "#08519c",
-                "#08306b"
+                "#08306b",
+                "#002c6e",
+                "#260085",
+                "#04006e"
             ])
 
         //stack the data? --> stack per subgroup
@@ -111,7 +114,7 @@
             .enter().append("rect")
             .attr("x", function(d) { return x(d[0]); })
             .attr("y", function(d) { return y(d.data.regions); })
-            .attr("height", y.bandwidth())
+            .attr("height", 20)
             .attr("width", function(d) { return x(d[1]) - x(d[0]); })
             .attr("rx", 6)
             .attr("ry", 6)

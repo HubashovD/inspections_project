@@ -82,7 +82,7 @@
     margin-top: 50px;
     width: calc(67% - 36px);
     position: relative;
-    width: 67%;
+    width: 50%;
 }
 
 #selectButton,
@@ -233,6 +233,11 @@ g.tick line {
     display: none
 }
 
+.tick {
+    font-size: 12px;
+    font-family: e-UkraineLight;
+}
+
 #line_chart svg g g.grid g.tick line {
     display: block
 }
@@ -248,6 +253,11 @@ g.tick line {
     padding-bottom: 10px;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+
+#back-color-spesial {
+    background-color: #E2ECF4;
+    height: auto;
 }
 
 #data_db_merged_pivot_sorted {
@@ -284,6 +294,10 @@ g.tick line {
     margin-right: 20%;
 }
 
+#regulator_raiting svg {
+    height: min-content;
+}
+
 #inspectors_count {
     position: relative;
     margin-left: auto;
@@ -306,9 +320,7 @@ g.tick line {
 }
 
 #violations_barplot {
-    grid-column: 1;
     position: relative;
-    max-width: 50%;
     margin-left: 12.5%;
 }
 
@@ -319,9 +331,7 @@ g.tick line {
 }
 
 #violations_db_pivot {
-    grid-column: 2;
     position: relative;
-    max-width: 50%;
     margin-left: 12.5%;
 }
 

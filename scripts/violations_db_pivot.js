@@ -28,7 +28,7 @@
 
         // Initialize the Y axis
         var x = d3.scaleLinear()
-            .range([0, width]);
+            .range([0, width - 50]);
 
         var xAxis = svg.append("g")
             .attr("class", "myXaxis")
@@ -68,7 +68,7 @@
                 .duration(100)
                 .style("opacity", 1)
             tooltip
-                .html("Орган: " + d.sphere + "<br>" + "кількість порушень на одну перевірку: " + d.raiting +
+                .html("Орган: " + d.sphere + "<br>" + "середня кількість порушень на одного інспектора: " + d.raiting +
                     "<br>" + "Порушень: " + d.Column + "<br>" + "Перевірок: " + d.ide)
                 .style("left", (d3.mouse(this)[0] + 90) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
