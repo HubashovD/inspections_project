@@ -21,10 +21,18 @@
 
         d3.select("#var-1").on("click", function() {
             update(data[0]);
+            d3.select("#var-1").style("background-color", "black");
+            d3.select("#var-1").style("color", "white");
+            d3.select("#var-2").style("background-color", "white");
+            d3.select("#var-2").style("color", "black");
         });
 
         d3.select("#var-2").on("click", function() {
             update(data[1]);
+            d3.select("#var-1").style("background-color", "white");
+            d3.select("#var-1").style("color", "black");
+            d3.select("#var-2").style("background-color", "black");
+            d3.select("#var-2").style("color", "white");
         });
     });
 
@@ -70,8 +78,8 @@
             .range([0, 25 * data.length])
             .padding([0.2])
 
-        d3.select("#inspectors_positions").select("svg")
-            .attr("height", 20 * data.length + 50)
+        d3.select("#regulator_raiting").select("svg")
+            .attr("height", 25 * data.length + 50)
 
 
         yAxis.call(d3.axisLeft(y))
@@ -83,6 +91,7 @@
         // Update the Y axis
         x.domain([0, d3.max(data, function(d) { return d.ide })]);
         xAxis.transition().duration(1000).call(d3.axisTop(x));
+
 
         // ----------------
         // Create a tooltip

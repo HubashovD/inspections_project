@@ -51,6 +51,8 @@
         var yAxis = svg.append("g")
             // .attr("transform", "translate(0," + height + ")")
 
+        update("відділи праці органів місцевого самоврядування");
+
         // A function that update the chart
         function update(selectedGroup) {
 

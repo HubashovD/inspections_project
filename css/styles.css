@@ -1,0 +1,464 @@
+@font-face {
+  font-family: e-UkraineLight;
+  src: url(../e-Ukraine-Light.woff);
+}
+
+@font-face {
+  font-family: e-UkraineRegular;
+  src: url(../e-Ukraine-Regular.woff);
+}
+
+@font-face {
+  font-family: e-UkraineHead;
+  src: url(../e-UkraineHead-NAME.otf);
+}
+
+@media (min-width: 1680px) {
+  #second-graph {
+    width: 1408px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1679px) {
+  #second-graph,
+  #line_chart,
+  #inspectors_count,
+  #regulator_raiting,
+  #inspectors_db_true_merged_2 {
+    width: 80%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1279px) {
+  .usual-text {
+    width: 864px;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 480px) {
+  #second-graph,
+  #line_chart,
+  #inspectors_count,
+  #regulator_raiting,
+  #inspectors_db_true_merged_2 {
+    width: 95%;
+  }
+}
+
+@media (max-width: 479px) {
+  #second-graph,
+  #line_chart,
+  #inspectors_count,
+  #regulator_raiting,
+  #inspectors_db_true_merged_2 {
+    width: 95%;
+  }
+  .usual-text {
+    width: 95%;
+  }
+  #var-3,
+  #var-4,
+  #var-5 {
+    width: 50%;
+  }
+}
+
+.usual-text p {
+  line-height: 1.5em;
+  margin-bottom: 2.5em;
+  width: 50%;
+  font-family: e-UkraineLight;
+  padding: 0;
+  box-align: justify;
+  margin-left: 12.5%;
+}
+
+.how-to-description {
+  line-height: 1.5em;
+}
+
+text {
+  font-family: e-UkraineLight;
+}
+
+#line-chart-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 80% 50px;
+      grid-template-columns: 80% 50px;
+  width: 100%;
+  padding: auto;
+}
+
+#legend {
+  padding-top: 40%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 10%;
+  height: 20px;
+}
+
+#legend p {
+  line-height: 1em;
+  margin-bottom: 1em;
+  font-family: e-UkraineLight;
+}
+
+#true {
+  background-color: red;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+
+#false {
+  background-color: green;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+
+#maybe {
+  background-color: purple;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+
+.descroption-list {
+  margin-left: 40px;
+}
+
+.usual-text ul li {
+  line-height: 1.5em;
+  margin-bottom: 2.5em;
+  width: 50%;
+  font-family: e-UkraineLight;
+  padding: 0;
+  box-align: justify;
+  margin-left: 12.5%;
+}
+
+#selectButton,
+#selectButton_3,
+#selectButton_1 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  position: relative;
+  cursor: pointer;
+  background-color: white;
+  font-family: e-UkraineLight;
+  max-width: 50%;
+  margin-left: 12.5%;
+  margin-right: 20%;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  border: 2px solid black;
+  padding: 12px 56px;
+  border-radius: 40px;
+}
+
+#var-1,
+#var-2,
+#var-3,
+#var-4,
+#var-5,
+#var-6 {
+  font-family: e-UkraineLight;
+  display: inline-block;
+  font-size: 1em;
+  border: 2px solid black;
+  border-radius: 40px;
+  background-color: black;
+  cursor: pointer;
+  background-origin: border-box;
+  border: 2px solid transparent;
+  position: relative;
+  border: 2px solid black;
+  padding: 12px 56px;
+  border-radius: 40px;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+  background-color: white;
+  margin-bottom: 20px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.small-header {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  display: block;
+  font-family: e-UkraineLight;
+  line-height: 1.5em;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+  -webkit-margin-after: 1em;
+          margin-block-end: 1em;
+  -webkit-margin-start: 0px;
+          margin-inline-start: 0px;
+  -webkit-margin-end: 0px;
+          margin-inline-end: 0px;
+  padding: 0;
+  box-align: justify;
+  margin-left: 12.5%;
+  margin-right: 20%;
+  margin-top: 50px;
+  position: relative;
+  width: 67%;
+  max-width: 50%;
+}
+
+#second-graph {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-width: 50%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  max-width: 70%;
+  margin-left: 12.5%;
+  margin-right: 20%;
+}
+
+#var-3 {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  display: block;
+}
+
+#var-4 {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  display: block;
+}
+
+#var-5 {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 3;
+  grid-row: 3;
+  display: block;
+}
+
+#second-graph-grid-buttons {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+#second-graph-grid-graph {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+#gray-text {
+  background-color: #f1f1f1;
+}
+
+#line_chart .line {
+  stroke-width: 3px;
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+path.domain {
+  display: none;
+}
+
+g.tick line {
+  display: none;
+}
+
+.tick {
+  font-size: 12px;
+  font-family: e-UkraineLight;
+}
+
+#line_chart svg g g.grid g.tick line {
+  display: block;
+}
+
+.container .how-to-section-wrapper {
+  max-width: 1680px;
+}
+
+.back-color {
+  background-color: #E2ECF4;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#back-color-spesial {
+  background-color: #E2ECF4;
+  height: auto;
+}
+
+#data_db_merged_pivot_sorted {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-width: 50%;
+  margin-left: 12.5%;
+  margin-right: 20%;
+}
+
+#line_chart {
+  height: auto;
+  margin-left: 8.25%;
+  margin-right: 8.25%;
+}
+
+#two-buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  margin-left: 12.5%;
+  margin-right: 20%;
+  max-width: 50%;
+}
+
+#regulator_raiting {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-width: 50%;
+  margin-left: 12.5%;
+  margin-right: 20%;
+}
+
+#regulator_raiting svg {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+#inspectors_count {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-width: 50%;
+  margin-left: 12.5%;
+  margin-right: 20%;
+}
+
+#inspectors_count .tooltip {
+  position: absolute;
+}
+
+.graph-box-two {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  width: 100%;
+  padding: auto;
+}
+
+#violations_barplot {
+  position: relative;
+  margin-left: 12.5%;
+}
+
+#violations_barplot .tooltip {
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#violations_db_pivot {
+  position: relative;
+  margin-left: 12.5%;
+}
+
+#violations_db_pivot .tooltip {
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#inspectors_positions {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-width: 50%;
+  margin-left: 12.5%;
+  margin-right: 20%;
+}
+
+#inspectors_positions .tooltip {
+  position: absolute;
+}
+
+#inspectors_db_true_merged_2 {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  margin-left: 12.5%;
+  margin-right: 20%;
+}
+
+#inspectors_db_true_merged_2 .tooltip {
+  position: absolute;
+}
+
+.active {
+  background-color: black;
+}
+/*# sourceMappingURL=styles.css.map */

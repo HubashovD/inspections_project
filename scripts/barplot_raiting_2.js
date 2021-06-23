@@ -34,14 +34,32 @@
 
     d3.select("#var-3").on("click", function() {
         update(data1);
+        d3.select("#var-3").style("background-color", "black");
+        d3.select("#var-3").style("color", "white");
+        d3.select("#var-4").style("background-color", "white");
+        d3.select("#var-4").style("color", "black");
+        d3.select("#var-5").style("background-color", "white");
+        d3.select("#var-5").style("color", "black");
     });
 
     d3.select("#var-4").on("click", function() {
         update(data2);
+        d3.select("#var-4").style("background-color", "black");
+        d3.select("#var-4").style("color", "white");
+        d3.select("#var-3").style("background-color", "white");
+        d3.select("#var-3").style("color", "black");
+        d3.select("#var-5").style("background-color", "white");
+        d3.select("#var-5").style("color", "black");
     });
 
     d3.select("#var-5").on("click", function() {
         update(data3);
+        d3.select("#var-5").style("background-color", "black");
+        d3.select("#var-5").style("color", "white");
+        d3.select("#var-4").style("background-color", "white");
+        d3.select("#var-4").style("color", "black");
+        d3.select("#var-3").style("background-color", "white");
+        d3.select("#var-3").style("color", "black");
     });
 
 

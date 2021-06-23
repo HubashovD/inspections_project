@@ -318,6 +318,7 @@ input::-webkit-calendar-picker-indicator {
 .container .how-to-section.is-open .how-to-description {
     max-height: 1000px;
     padding: 16px;
+    line-height: 1.5em;
 }
 
 .container .how-to-section.is-open .how-to-bar:before {
