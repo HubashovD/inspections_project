@@ -1,25 +1,24 @@
 (function() {
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 0, bottom: 50, left: 200 },
-        width = d3.select("#violations_barplot").node().getBoundingClientRect().width - margin.left - margin.right,
-        height = 700 - margin.top - margin.bottom;
+    var margin = { top: 20, right: 30, bottom: 50, left: 160 },
+        width = d3.select("#data_db_merged_pivot_sorted").node().getBoundingClientRect().width - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    var svg = d3.select("#violations_barplot")
+    var svg = d3.select("#data_db_merged_pivot_sorted_2")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv("data/violations_barplot.csv").then(function(data) {
-
+    d3.csv("data/data_db_merged_pivot_sorted.csv").then(function(data) {
         data.forEach(function(d) {
-            d.index = +d.index;
-            d.rate = +d.rate;
-            d.ide = +d.ide;
-            d.Column = +d.Column;
+            d.status = +d.status;
+            d.violation_id = +d.violation_id;
+            d.rate = d.rate;
         });
+
 
         // Initialize the X axis
         var y = d3.scaleBand()
@@ -39,7 +38,7 @@
 
         // A function that create / update the plot for a given variable:
         // Update the X axis
-        y.domain(data.map(function(d) { return d.short_name; }))
+        y.domain(data.map(function(d) { return d.short_bas; }))
         yAxis.call(d3.axisLeft(y))
             .selectAll("text")
             .attr("transform", "translate(-10,0)")
@@ -48,13 +47,13 @@
 
 
         // Update the Y axis
-        x.domain([0, d3.max(data, function(d) { return d.index })]);
+        x.domain([0, d3.max(data, function(d) { return d.status })]);
         xAxis.transition().duration(1000).call(d3.axisTop(x));
 
         // ----------------
         // Create a tooltip
         // ----------------
-        var tooltip = d3.select("#violations_barplot")
+        var tooltip = d3.select("#data_db_merged_pivot_sorted_2")
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
@@ -106,9 +105,9 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", 0)
-            .attr("y", function(d) { return y(d.short_name); })
+            .attr("y", function(d) { return y(d.short_bas); })
             .attr("height", 20)
-            .attr("width", function(d) { return x(d.index); })
+            .attr("width", function(d) { return x(d.status); })
             .attr("fill", "#4562AB")
             .attr("rx", 6)
             .attr("ry", 6)
@@ -131,9 +130,9 @@
             .merge(label)
             .transition() // and apply changes to all of them
             .duration(1000)
-            .attr("x", function(d) { return x(d.index) + 2; })
-            .attr("y", function(d) { return y(d.short_name) + 15; })
-            .text(function(d) { return d.index; });
+            .attr("x", function(d) { return x(d.status) + 2; })
+            .attr("y", function(d) { return y(d.short_bas) + 15; })
+            .text(function(d) { return d.status; });
 
         label
             .exit()

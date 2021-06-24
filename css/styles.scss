@@ -142,6 +142,13 @@ text {
     margin-left: 12.5%;
 }
 
+selectButton_1 option {
+    margin-bottom: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px 4px 8px;
+}
+
 #selectButton,
 #selectButton_3,
 #selectButton_1 {
@@ -160,6 +167,7 @@ text {
     border: 2px solid black;
     padding: 12px 56px;
     border-radius: 40px;
+    color: red;
 }
 
 #var-1,
@@ -219,6 +227,10 @@ text {
     max-width: 70%;
     margin-left: 12.5%;
     margin-right: 20%;
+}
+
+.bar-labels {
+    font-family: e-UkraineLight;
 }
 
 #var-3 {
@@ -318,12 +330,27 @@ g.tick line {
 }
 
 #data_db_merged_pivot_sorted {
-    margin-left: auto;
-    margin-right: auto;
     height: auto;
     max-width: 50%;
     margin-left: 12.5%;
-    margin-right: 20%;
+    position: relative;
+}
+
+#data_db_merged_pivot_sorted_2 {
+    height: auto;
+    max-width: 50%;
+    margin-left: 12.5%;
+    position: relative;
+}
+
+#data_db_merged_pivot_sorted_2 .tooltip {
+    position: absolute;
+    pointer-events: none;
+}
+
+#data_db_merged_pivot_sorted .tooltip {
+    position: absolute;
+    pointer-events: none;
 }
 
 #line_chart {
@@ -334,7 +361,7 @@ g.tick line {
 
 #two-buttons {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     margin-left: 12.5%;
     margin-right: 20%;
     max-width: 50%;
@@ -358,25 +385,26 @@ g.tick line {
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    max-width: 50%;
+    max-width: 70%;
     margin-left: 12.5%;
     margin-right: 20%;
 }
 
 #inspectors_count .tooltip {
     position: absolute;
+    pointer-events: none;
 }
 
 .graph-box-two {
     display: grid;
     grid-template-columns: auto auto;
     width: 100%;
-    padding: auto;
+    padding: 0;
 }
 
 #violations_barplot {
     position: relative;
-    margin-left: 12.5%;
+    pointer-events: none;
 }
 
 #violations_barplot .tooltip {
@@ -387,27 +415,20 @@ g.tick line {
 
 #violations_db_pivot {
     position: relative;
-    margin-left: 12.5%;
 }
 
 #violations_db_pivot .tooltip {
     position: absolute;
-    z-index: 999;
     pointer-events: none;
 }
 
 #inspectors_positions {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    max-width: 50%;
-    margin-left: 12.5%;
-    margin-right: 20%;
 }
 
 #inspectors_positions .tooltip {
     position: absolute;
+    pointer-events: none;
 }
 
 #inspectors_db_true_merged_2 {

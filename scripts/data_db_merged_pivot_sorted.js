@@ -1,6 +1,6 @@
 (function() {
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 30, bottom: 50, left: 100 },
+    var margin = { top: 20, right: 30, bottom: 50, left: 160 },
         width = d3.select("#data_db_merged_pivot_sorted").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -15,6 +15,8 @@
     d3.csv("data/data_db_merged_pivot_sorted.csv").then(function(data) {
         data.forEach(function(d) {
             d.status = +d.status;
+            d.violation_id = +d.violation_id;
+            d.rate = d.rate;
         });
 
 
@@ -24,11 +26,12 @@
             .padding(0.2);
 
         var yAxis = svg.append("g")
-            // .attr("transform", "translate(0," + width + ")")
+
+        // .attr("transform", "translate(0," + width + ")")
 
         // Initialize the Y axis
         var x = d3.scaleLinear()
-            .range([0, width]);
+            .range([0, width - 50]);
 
         var xAxis = svg.append("g")
             .attr("class", "myXaxis")
@@ -36,11 +39,14 @@
 
         // A function that create / update the plot for a given variable:
         // Update the X axis
-        y.domain(data.map(function(d) { return d.reason_bas; }))
+        y.domain(data.map(function(d) { return d.short_bas; }))
+
         yAxis.call(d3.axisLeft(y))
-            .selectAll("text")
+
+        .selectAll("text")
             .attr("transform", "translate(-10,0)")
             .style("text-anchor", "end")
+
 
 
 
@@ -105,7 +111,7 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", 0)
-            .attr("y", function(d) { return y(d.reason_bas); })
+            .attr("y", function(d) { return y(d.short_bas); })
             .attr("height", 20)
             .attr("width", function(d) { return x(d.status); })
             .attr("fill", "#4562AB")
@@ -131,7 +137,7 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", function(d) { return x(d.status); })
-            .attr("y", function(d) { return y(d.reason_bas) + 10; })
+            .attr("y", function(d) { return y(d.short_bas) + 10; })
             .text(function(d) { return d.status; });
 
         label

@@ -89,16 +89,19 @@
             tooltip
                 .style("opacity", 1)
                 .html(subgroupName + "<br>" + "<b>" + "Інспекторів: " + Math.round(subgroupValue) + "</b>")
+                .style("left", (d3.mouse(this)[0]) + "px")
+                .style("top", (d3.mouse(this)[1] - 50) + "px")
 
         }
         var mousemove = function(d) {
             tooltip
-                .style("left", (d3.mouse(this)[0] + 90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-                .style("top", (d3.mouse(this)[1]) + "px")
+                .style("left", (d3.mouse(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                .style("top", (d3.mouse(this)[1] - 50) + "px")
+            console.log(this)
         }
         var mouseleave = function(d) {
             tooltip
-                .style("opacity", 1)
+                .style("opacity", 0)
         }
 
         // Show the bars

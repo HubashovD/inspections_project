@@ -31,6 +31,8 @@
         { group: "позапланова", value: 9.19 }
     ];
 
+    d3.select("#var-3").style("background-color", "black");
+    d3.select("#var-3").style("color", "white");
 
     d3.select("#var-3").on("click", function() {
         update(data1);

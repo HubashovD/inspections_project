@@ -70,6 +70,9 @@
                 .style("left", (d3.mouse(this)[0] + 90) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
         }
+
+
+
         var moveTooltip = function(d) {
                 tooltip
                     .style("left", (d3.mouse(this)[0] + 90) + "px")

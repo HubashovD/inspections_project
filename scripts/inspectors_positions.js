@@ -2,7 +2,7 @@
 
 
     // set the dimensions and margins of the graph
-    var margin = { top: 30, right: 30, bottom: 70, left: 150 },
+    var margin = { top: 30, right: 30, bottom: 70, left: 220 },
         width = d3.select("#inspectors_positions").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
@@ -51,7 +51,7 @@
         var yAxis = svg.append("g")
             // .attr("transform", "translate(0," + height + ")")
 
-        update("відділи праці органів місцевого самоврядування");
+        update("Відділи праці органів місцевого самоврядування");
 
         // A function that update the chart
         function update(selectedGroup) {
@@ -73,10 +73,17 @@
             y.domain(dataFilter.map(function(d) { return d.clear_position; }))
                 .range([0, 20 * dataFilter.length])
 
+
             d3.select("#inspectors_positions").select("svg")
                 .attr("height", 20 * dataFilter.length + 50)
 
             yAxis.call(d3.axisLeft(y))
+
+            d3.axisLeft(y)
+                .tickFormat(function(d) {
+                    return d.substring(0, 15) + "...";
+                });
+
 
             // Update the Y axis
             x.domain([0, d3.max(dataFilter, function(d) { return d.ide })]);
@@ -105,13 +112,14 @@
                     .style("opacity", 1)
                 tooltip
                     .html(d.clear_position + ": " + d.ide)
-                    .style("left", (d3.mouse(this)[0] + 90) + "px")
-                    .style("top", (d3.mouse(this)[1]) + "px")
+                    .style("left", (d3.mouse(this)[0] + 50) + "px")
+                    .style("top", (d3.mouse(this)[1] - 20) + "px")
+                console.log(this)
             }
             var moveTooltip = function(d) {
                     tooltip
-                        .style("left", (d3.mouse(this)[0] + 90) + "px")
-                        .style("top", (d3.mouse(this)[1]) + "px")
+                        .style("left", (d3.mouse(this)[0] + 50) + "px")
+                        .style("top", (d3.mouse(this)[1] - 20) + "px")
                 }
                 // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
             var hideTooltip = function(d) {

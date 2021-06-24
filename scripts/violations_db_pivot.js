@@ -1,7 +1,7 @@
 (function() {
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 0, bottom: 50, left: 100 },
-        width = d3.select("#violations_db_pivot").node().getBoundingClientRect().width - margin.left - margin.right,
+    var margin = { top: 20, right: 0, bottom: 50, left: 200 },
+        width = d3.select("#violations_db_pivot").node().getBoundingClientRect().width,
         height = 700 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
@@ -36,7 +36,7 @@
 
         // A function that create / update the plot for a given variable:
         // Update the X axis
-        y.domain(data.map(function(d) { return d.sphere; }))
+        y.domain(data.map(function(d) { return d.short_name; }))
         yAxis.call(d3.axisLeft(y))
             .selectAll("text")
             .attr("transform", "translate(-10,0)")
@@ -51,7 +51,7 @@
         // ----------------
         // Create a tooltip
         // ----------------
-        var tooltip = d3.select("#violations_barplot")
+        var tooltip = d3.select("#violations_db_pivot")
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
@@ -69,14 +69,14 @@
                 .style("opacity", 1)
             tooltip
                 .html("Орган: " + d.sphere + "<br>" + "середня кількість порушень на одного інспектора: " + d.raiting +
-                    "<br>" + "Порушень: " + d.Column + "<br>" + "Перевірок: " + d.ide)
+                    "<br>" + "Інспекторів: " + d.pib + "<br>" + "Перевірок: " + d.ide)
                 .style("left", (d3.mouse(this)[0] + 90) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
+                .style("top", (d3.mouse(this)[1] - 90) + "px")
         }
         var moveTooltip = function(d) {
                 tooltip
                     .style("left", (d3.mouse(this)[0] + 90) + "px")
-                    .style("top", (d3.mouse(this)[1]) + "px")
+                    .style("top", (d3.mouse(this)[1] - 90) + "px")
             }
             // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
         var hideTooltip = function(d) {
@@ -103,7 +103,7 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", 0)
-            .attr("y", function(d) { return y(d.sphere); })
+            .attr("y", function(d) { return y(d.short_name); })
             .attr("height", 20)
             .attr("width", function(d) { return x(d.raiting); })
             .attr("fill", "#4562AB")
@@ -129,8 +129,8 @@
             .transition() // and apply changes to all of them
             .duration(1000)
             .attr("x", function(d) { return x(d.raiting); })
-            .attr("y", function(d) { return y(d.sphere) + 10; })
-            .text(function(d) { return d.ide; });
+            .attr("y", function(d) { return y(d.short_name) + 10; })
+            .text(function(d) { return d.raiting; });
 
         label
             .exit()

@@ -6,15 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" async="" src="https://stats.g.doubleclick.net/dc.js"></script>
     <object class="chrome-extension://jffafkigfgmjafhpkoibhfefeaebmccg/" style="display: none; visibility: hidden;"></object>
-    <title>як держава перевіряє бізнес?</title>
+    <title>Як держава перевіряє бізнес?</title>
     <script src="lib/d3v5_min.js"></script>
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/inspectors_count.css" rel="stylesheet" />
     <link href="css/regulator_raiting.css" rel="stylesheet" />
-    <link href="css/violations_barplot.css" rel="stylesheet" />
-    <link href="css/inspectors_positions.css" rel="stylesheet" />
-    <link href="css/inspectors_db_true_merged_2.css" rel="stylesheet" />
     <link href="css/barplot_raiting.css" rel="stylesheet" />
     <link href="css/barplot_raiting_2.css" rel="stylesheet" />
     <!-- Color Scale -->
@@ -39,7 +35,6 @@
                         <div class="text-under">
                             <p>Як держава перевіряє бізнес?</p>
                         </div>
-                        <a href="#nav-section" class="scroll-button">Переглянути проєкт</a>
                     </div>
 
                 </div>
@@ -223,7 +218,7 @@
     </div>
     <div class="back-color">
         <!-- Initialize a select button -->
-        <select id="selectButton"></select>
+        <select id="selectButton" class="custom-select"></select>
         <!-- Create a div where the graph will take place -->
         <div id="line-chart-box">
             <div id="line_chart"></div>
@@ -270,7 +265,7 @@
     <div class="back-color">
         <!-- Add 2 buttons -->
         <div id="two-buttons">
-            <button id="var-1" class="switch-line" type="button">"Інспекції"</button>
+            <button id="var-1" class="switch-line" type="button">Інспекції</button>
             <button id="var-2" class="switch-line">Регіони</button>
         </div>
         <!-- Create a div where the graph will take place -->
@@ -439,8 +434,9 @@
                 осіб, що здійснюють перевірки. А насправді їх 10 тисяч, ще 2 тисячі - дублі, що виникли через різне написання одних і тих самих прізвищ. Така ж ситуація з офіційними назвами. <br /><br />Подібна проблема - типова для відкритих даних, оприлюднених
                 держорганами, зокрема, ТЕКСТИ ще в 2019 році проаналізували декларації державних службовців в статті &laquo;Країні потрібні вахівці. Найсмішніші помилки та абревіатури з декларацій чиновників&raquo;.</p>
             <p>Державний інспекційний портал має АРІ, щоб кожен охочий міг отримати актуальну та достовірну інформацію про проведені та заплановані перевірки. Але користуватися ним практично неможливо через погано структуровані дані, різні поняття та різні
-                формулювання, що використовують розпорядники (не кажучи вже про помилки).<br />Також проблемою є аналіз інформації щодо перевірок фізичних осіб підприємців, адже використання РНОКПП для ідентифікації фізичних осіб підприємців, є по суті
-                розголошенням персональних даних, набагато зручніше та практичніше було б використовувати номер запису в єдиному державному реєстрі, адже використання ПІБ може призвести до помилок (люди можуть бути повними тезками).</p>
+                формулювання, що використовують розпорядники (не кажучи вже про помилки).<br />Також проблемою є аналіз інформації щодо перевірок фізичних осіб підприємців, адже використання РНОКПП (індивідуальний податковий номер - ІПН) для ідентифікації
+                фізичних осіб підприємців, є по суті розголошенням персональних даних, набагато зручніше та практичніше було б використовувати номер запису в єдиному державному реєстрі, адже використання ПІБ може призвести до помилок (люди можуть бути
+                повними тезками).</p>
             <p>Ми б також радили Державній регуляторній службі та офісу ефективного регулювання BRDO звернути увагу на те, як контролюючі органи ведуть звітність та заповнити базу даних, зокрема:</p>
             <ul>
                 <li>уніфікувати назви контролюючих органів;</li>

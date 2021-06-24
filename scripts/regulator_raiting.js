@@ -17,7 +17,8 @@
         });
 
         update(data[1]);
-
+        d3.select("#var-2").style("background-color", "black");
+        d3.select("#var-2").style("color", "white");
 
         d3.select("#var-1").on("click", function() {
             update(data[0]);
@@ -60,7 +61,7 @@
 
     // Initialize the Y axis
     var x = d3.scaleLinear()
-        .range([0, width - 10]);
+        .range([0, width - 20]);
 
     var xAxis = svg.append("g")
         .attr("class", "myXaxis")

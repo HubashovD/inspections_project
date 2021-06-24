@@ -126,7 +126,7 @@
 
 
 
-        draw_scatter("пенсійний фонд україни");
+        draw_scatter("Державна служба України з питань безпечності харчових продуктів та захисту споживачів");
 
 
 
@@ -137,7 +137,7 @@
             var filtered = input.filter(function(d) { return d.sphere == filtered_val });
 
             scatter_x
-                .range([0, scatter_width])
+                .range([10, scatter_width])
                 .domain([0, d3.max(filtered, function(d) { return d.viol_sum })])
 
             scatter_x2
@@ -215,8 +215,8 @@
 
             focusDots
                 .attr("data-tippy-content", function(d) {
-                    let tipyAmount = d.viol_sum >= 1000 ? moneyFormat(d.viol_sum) : Math.round(d.viol_sum);
-                    return "<b>" + d.wide_cat + '</b><br>' + d.date + ": " + tipyAmount + " грн"
+                    let tipyAmount = Math.round(d.viol_sum);
+
                 })
                 .transition()
                 .duration(500)

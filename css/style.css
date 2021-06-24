@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: e-UkraineHead;
-    src: url(../e-UkraineHead-NAME.otf);
+    src: url(../e-UkraineHead-Bold.woff);
 }
 
 * {
@@ -1189,11 +1189,8 @@ input::-webkit-calendar-picker-indicator {
 .container .main-section .hospital-stats-wrapper .bar-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (0.33fr)[3];
     grid-template-columns: repeat(3, 0.33fr);
-    -ms-grid-rows: (300px)[3];
     grid-template-rows: repeat(3, 300px);
-    -webkit-column-gap: 5px;
     column-gap: 5px;
     row-gap: 15px;
 }
@@ -1358,11 +1355,8 @@ input::-webkit-calendar-picker-indicator {
         width: 80%;
     }
     .container .main-section .hospital-stats-wrapper .hospital-stats-container .bar-grid {
-        -ms-grid-columns: (0.5fr)[2];
         grid-template-columns: repeat(2, 0.5fr);
-        -ms-grid-rows: (300px)[5];
         grid-template-rows: repeat(5, 300px);
-        -webkit-column-gap: 5px;
         column-gap: 5px;
         row-gap: 15px;
     }
@@ -1416,11 +1410,8 @@ input::-webkit-calendar-picker-indicator {
     margin-bottom: 36px;
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 0.68fr 0.32fr;
     grid-template-columns: 0.68fr 0.32fr;
-    -ms-grid-rows: (auto)[3];
     grid-template-rows: repeat(3, auto);
-    -webkit-column-gap: 8px;
     column-gap: 8px;
 }
 
