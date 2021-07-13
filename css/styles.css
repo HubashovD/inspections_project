@@ -98,6 +98,12 @@
   #selectButton {
     max-width: 80vw !important;
   }
+  #selectButton_1 {
+    max-width: 80vw !important;
+  }
+  #selectButton_3 {
+    max-width: 80vw !important;
+  }
   .graph-box-two {
     display: block !important;
   }
@@ -122,6 +128,18 @@
   #violations_db_pivot #violations_barplot {
     display: block !important;
     max-width: 99vw !important;
+  }
+  .usual-text ul li {
+    max-width: 80vw !important;
+    width: unset !important;
+  }
+  #inspectors_db_true_merged_2 {
+    margin-left: 1em !important;
+    max-width: 99vw !important;
+    margin-right: auto !important;
+  }
+  .how-to-section-wrapper {
+    margin-left: unset !important;
   }
 }
 
