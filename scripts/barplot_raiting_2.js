@@ -167,9 +167,11 @@
             .merge(label)
             .transition() // and apply changes to all of them
             .duration(1000)
-            .attr("x", function(d) { return x(d.group); })
+            .attr("x", function(d) { return x(d.group) + x.bandwidth() / 2; })
             .attr("y", function(d) { return y(d.value); })
-            .text(function(d) { return d.value; });
+            .attr("dy", "-1em")
+            .text(function(d) { return d.value; })
+            .style("text-anchor", "middle");
 
         label
             .exit()

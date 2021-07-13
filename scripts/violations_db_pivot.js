@@ -1,7 +1,7 @@
 (function() {
     // set the dimensions and margins of the graph
     var margin = { top: 20, right: 0, bottom: 50, left: 200 },
-        width = d3.select("#violations_db_pivot").node().getBoundingClientRect().width,
+        width = d3.select("#violations_db_pivot").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page

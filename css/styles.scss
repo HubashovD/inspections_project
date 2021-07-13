@@ -30,8 +30,9 @@
 }
 
 @media (min-width: 992px) and (max-width: 1279px) {
-    .usual-text {
-        width: 864px;
+    .usual-text,
+    .small-header {
+        width: 864px !important;
     }
 }
 
@@ -56,10 +57,69 @@
     .usual-text {
         width: 95%;
     }
-    #var-3,
-    #var-4,
-    #var-5 {
-        width: 50%;
+}
+
+@media (max-width: 991px) {
+    .usual-text p {
+        width: 80vw !important;
+    }
+    .small-header {
+        width: 80vw !important;
+        max-width: unset !important;
+    }
+    #data_db_merged_pivot_sorted {
+        max-width: 80vw !important;
+    }
+    #line-chart-box {
+        display: block !important;
+        #legend {
+            display: flex !important;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1.5em;
+            margin-left: 1em;
+            .legend-row {
+                display: flex;
+            }
+        }
+    }
+    #line_chart {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    #selectButton {
+        max-width: 80vw !important;
+    }
+    .graph-box-two {
+        display: block !important;
+    }
+    .how-to-bar .how-to-border {
+        max-width: 80vw;
+        margin-left: 2em !important;
+    }
+    #regulator_raiting {
+        margin-left: 1em !important;
+        max-width: 99vw !important;
+        margin-right: auto !important;
+    }
+    #inspectors_count {
+        margin-left: 1em !important;
+        max-width: 99vw !important;
+        margin-right: auto !important;
+    }
+    #two-buttons {
+        display: block !important;
+        max-width: 99vw !important;
+    }
+    #violations_db_pivot #violations_barplot {
+        display: block !important;
+        max-width: 99vw !important;
+    }
+}
+
+@media (max-width: 991px) {
+    #second-graph {
+        display: block !important;
     }
 }
 
@@ -71,12 +131,16 @@
         font-family: e-UkraineLight;
         padding: 0;
         box-align: justify;
-        margin-left: 12.5%;
+        margin-left: 12.5vw;
     }
 }
 
 .how-to-description {
     line-height: 1.5em;
+}
+
+.how-to-content {
+    padding-bottom: 1em !important;
 }
 
 text {
@@ -91,12 +155,11 @@ text {
 }
 
 #legend {
-    padding-top: 40%;
     display: grid;
-    grid-template-columns: auto auto;
-    align-content: center;
-    width: 10%;
-    height: 20px;
+    grid-template-rows: auto;
+    // grid-template-columns: auto auto;
+    align-content: start;
+    // width: 10%;
     p {
         line-height: 1em;
         margin-bottom: 1em;
@@ -139,7 +202,7 @@ text {
     font-family: e-UkraineLight;
     padding: 0;
     box-align: justify;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
 }
 
 selectButton_1 option {
@@ -157,17 +220,19 @@ selectButton_1 option {
     position: relative;
     cursor: pointer;
     background-color: white;
-    font-family: e-UkraineLight;
+    font-family: e-UkraineLight, sans-serif;
     max-width: 50%;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     margin-right: 20%;
     margin-bottom: 20px;
     position: relative;
     display: inline-block;
     border: 2px solid black;
-    padding: 12px 56px;
+    padding: 12px 0;
     border-radius: 40px;
-    color: red;
+    option {
+        font-family: e-UkraineLight, sans-serif;
+    }
 }
 
 #var-1,
@@ -207,7 +272,7 @@ selectButton_1 option {
     margin-inline-end: 0px;
     padding: 0;
     box-align: justify;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     margin-right: 20%;
     margin-top: 50px;
     position: relative;
@@ -225,7 +290,7 @@ selectButton_1 option {
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
     max-width: 70%;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     margin-right: 20%;
 }
 
@@ -313,6 +378,7 @@ g.tick line {
 
 .container .how-to-section-wrapper {
     max-width: 1680px;
+    margin-left: 12.5vw;
 }
 
 .back-color {
@@ -332,14 +398,14 @@ g.tick line {
 #data_db_merged_pivot_sorted {
     height: auto;
     max-width: 50%;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     position: relative;
 }
 
 #data_db_merged_pivot_sorted_2 {
     height: auto;
     max-width: 50%;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     position: relative;
 }
 
@@ -362,7 +428,7 @@ g.tick line {
 #two-buttons {
     display: grid;
     grid-template-columns: 50% 50%;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     margin-right: 20%;
     max-width: 50%;
 }
@@ -372,7 +438,7 @@ g.tick line {
     margin-right: auto;
     height: auto;
     max-width: 50%;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     margin-right: 20%;
 }
 
@@ -386,7 +452,7 @@ g.tick line {
     margin-right: auto;
     height: auto;
     max-width: 70%;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     margin-right: 20%;
 }
 
@@ -436,7 +502,7 @@ g.tick line {
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    margin-left: 12.5%;
+    margin-left: 12.5vw;
     margin-right: 20%;
 }
 

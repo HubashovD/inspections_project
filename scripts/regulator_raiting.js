@@ -39,7 +39,7 @@
 
 
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 30, bottom: 0, left: 250 },
+    var margin = { top: 20, right: 30, bottom: 0, left: 110 },
         width = d3.select("#regulator_raiting").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
@@ -85,7 +85,7 @@
 
         yAxis.call(d3.axisLeft(y))
             .selectAll("text")
-            .attr("transform", "translate(-10,0)")
+            .attr("transform", "translate(0,0)")
             .style("text-anchor", "end")
 
 

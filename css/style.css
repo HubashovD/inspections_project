@@ -588,11 +588,11 @@ input::-webkit-calendar-picker-indicator {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-    margin: 10px auto 10px auto;
+    margin: 10px 0;
     height: 67px;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: space-around;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
