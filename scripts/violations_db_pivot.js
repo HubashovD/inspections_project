@@ -28,7 +28,7 @@
 
         // Initialize the Y axis
         var x = d3.scaleLinear()
-            .range([0, width - 50]);
+            .range([0, width - 70]);
 
         var xAxis = svg.append("g")
             .attr("class", "myXaxis")

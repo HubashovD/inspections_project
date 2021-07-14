@@ -60,6 +60,10 @@
 }
 
 @media (max-width: 991px) {
+    #inspectors_positions {
+        max-width: 99vw !important;
+        margin-left: 2em !important;
+    }
     .usual-text p {
         width: 80vw !important;
     }
@@ -469,7 +473,7 @@ g.tick line {
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    max-width: 70%;
+    max-width: 50vw;
     margin-left: 12.5vw;
     margin-right: 20%;
 }
@@ -481,7 +485,7 @@ g.tick line {
 
 .graph-box-two {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50vw 50vw;
     width: 100%;
     padding: 0;
 }
@@ -508,6 +512,8 @@ g.tick line {
 
 #inspectors_positions {
     position: relative;
+    max-width: 50vw;
+    margin-left: 12.5vw;
 }
 
 #inspectors_positions .tooltip {
@@ -517,11 +523,9 @@ g.tick line {
 
 #inspectors_db_true_merged_2 {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
     height: auto;
-    margin-left: 12.5vw;
-    margin-right: 20%;
+    margin-left: 2em;
+    max-width: 99vw;
 }
 
 #inspectors_db_true_merged_2 .tooltip {

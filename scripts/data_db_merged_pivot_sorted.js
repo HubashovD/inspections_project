@@ -91,7 +91,7 @@
             tooltip
                 .transition()
                 .duration(100)
-                .style("opacity", 1)
+                .style("opacity", 0)
         }
 
 
