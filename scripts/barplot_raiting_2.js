@@ -17,18 +17,18 @@
     // create 2 data_set
 
     var data1 = [
-        { group: "планова", value: 13040 },
-        { group: "позапланова", value: 63719 }
+        { group: "планова", value: 18481 },
+        { group: "позапланова", value: 128174 }
     ];
 
     var data2 = [
-        { group: "планова", value: 197204 },
-        { group: "позапланова", value: 585700 }
+        { group: "планова", value: 197833 },
+        { group: "позапланова", value: 412181 }
     ];
 
     var data3 = [
-        { group: "планова", value: 15.12 },
-        { group: "позапланова", value: 9.19 }
+        { group: "планова", value: 10.7 },
+        { group: "позапланова", value: 3.2 }
     ];
 
     d3.select("#var-3").style("background-color", "black");

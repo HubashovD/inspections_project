@@ -114,14 +114,16 @@
                 .duration(100)
                 .style("opacity", 1)
             tooltip
-                .html(d.sphere + "<br>" + d.ide + " перевірок")
-                .style("left", (d3.mouse(this)[0] + 90) + "px")
+                .html(d.sphere_detailed + "<br>" + d.ide + " перевірок")
+                .style("left", (d3.mouse(this)[0] - 100) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
+                .style("width", 150 + "px")
         }
         var moveTooltip = function(d) {
                 tooltip
-                    .style("left", (d3.mouse(this)[0] + 90) + "px")
+                    .style("left", (d3.mouse(this)[0] - 100) + "px")
                     .style("top", (d3.mouse(this)[1]) + "px")
+                    .style("width", 150 + "px")
             }
             // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
         var hideTooltip = function(d) {

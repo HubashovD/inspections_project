@@ -28,7 +28,7 @@
 
 
         // List of groups (here I have one group per column)
-        var allGroup = d3.map(data, function(d) { return (d.sphere) }).keys()
+        var allGroup = d3.map(data, function(d) { return (d.sphere_detailed) }).keys()
 
         // add the options to the button
         d3.select("#selectButton")
@@ -54,7 +54,7 @@
 
 
 
-        var testFilter = data.filter(function(d) { return d.sphere == allGroup[0] });
+        var testFilter = data.filter(function(d) { return d.sphere_detailed == allGroup[0] });
 
         // Add Y axis
         var y = d3.scaleLinear()
@@ -133,7 +133,7 @@
 
 
             // Create new data with the selection?
-            var dataFilter = data.filter(function(d) { return d.sphere == selectedGroup });
+            var dataFilter = data.filter(function(d) { return d.sphere_detailed == selectedGroup });
 
 
             sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
