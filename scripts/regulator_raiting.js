@@ -39,7 +39,7 @@
 
 
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 30, bottom: 0, left: 110 },
+    var margin = { top: 20, right: 30, bottom: 0, left: 120 },
         width = d3.select("#regulator_raiting").node().getBoundingClientRect().width - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
@@ -114,16 +114,16 @@
                 .duration(100)
                 .style("opacity", 1)
             tooltip
-                .html(d.sphere_detailed + "<br>" + d.ide + " перевірок")
+                .html(d.sphere_detailed + "<br>" + "<b>" + d.ide + "</b>" + " перевірок")
                 .style("left", (d3.mouse(this)[0] - 100) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
-                .style("width", 150 + "px")
+                .style("top", (d3.mouse(this)[1]) + 19 + "px")
+                .style("width", 185 + "px")
         }
         var moveTooltip = function(d) {
                 tooltip
                     .style("left", (d3.mouse(this)[0] - 100) + "px")
-                    .style("top", (d3.mouse(this)[1]) + "px")
-                    .style("width", 150 + "px")
+                    .style("top", (d3.mouse(this)[1]) + 19 + "px")
+                    .style("width", 185 + "px")
             }
             // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
         var hideTooltip = function(d) {

@@ -326,8 +326,9 @@ g.tick line {
 
 #violations_barplot .tooltip {
     position: absolute;
-    z-index: 999;
+    z-index: 998;
     pointer-events: none;
+    background-color: red;
 }
 
 #violations_db_pivot {
