@@ -78,13 +78,15 @@
                     d.status + "</b>" +
                     "<br>" + "Кількість знайдених порушень: " + "<b>" + d.violation_id + "</b>" +
                     "<br>" + "Середня кількість порушень знайдених під час однієї перевірки: " + "<b>" + d.rate + "</b>")
-                .style("left", (d3.mouse(this)[0] + 300) + "px")
+                .style("left", (d3.mouse(this)[0] + 90) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
+                .style("width", 220 + "px")
         }
         var moveTooltip = function(d) {
                 tooltip
-                    .style("left", (d3.mouse(this)[0] - 300) + "px")
+                    .style("left", (d3.mouse(this)[0] - 90) + "px")
                     .style("top", (d3.mouse(this)[1]) + "px")
+                    .style("width", 220 + "px")
             }
             // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
         var hideTooltip = function(d) {
